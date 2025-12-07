@@ -1,118 +1,218 @@
 import { createFileRoute } from '@tanstack/react-router'
-import {
-  Zap,
-  Server,
-  Route as RouteIcon,
-  Shield,
-  Waves,
-  Sparkles,
-} from 'lucide-react'
+import Header from '../components/header'
+import HeroSection from '../components/hero-section'
+import Footer from '../components/footer'
+import CTASection from '../components/cta-section'
+import { FONTS } from '../config/constants'
 
-export const Route = createFileRoute('/')({ component: App })
+export const Route = createFileRoute('/')({
+  component: Index,
+})
 
-function App() {
-  const features = [
-    {
-      icon: <Zap className="w-12 h-12 text-cyan-400" />,
-      title: 'Powerful Server Functions',
-      description:
-        'Write server-side code that seamlessly integrates with your client components. Type-safe, secure, and simple.',
-    },
-    {
-      icon: <Server className="w-12 h-12 text-cyan-400" />,
-      title: 'Flexible Server Side Rendering',
-      description:
-        'Full-document SSR, streaming, and progressive enhancement out of the box. Control exactly what renders where.',
-    },
-    {
-      icon: <RouteIcon className="w-12 h-12 text-cyan-400" />,
-      title: 'API Routes',
-      description:
-        'Build type-safe API endpoints alongside your application. No separate backend needed.',
-    },
-    {
-      icon: <Shield className="w-12 h-12 text-cyan-400" />,
-      title: 'Strongly Typed Everything',
-      description:
-        'End-to-end type safety from server to client. Catch errors before they reach production.',
-    },
-    {
-      icon: <Waves className="w-12 h-12 text-cyan-400" />,
-      title: 'Full Streaming Support',
-      description:
-        'Stream data from server to client progressively. Perfect for AI applications and real-time updates.',
-    },
-    {
-      icon: <Sparkles className="w-12 h-12 text-cyan-400" />,
-      title: 'Next Generation Ready',
-      description:
-        'Built from the ground up for modern web applications. Deploy anywhere JavaScript runs.',
-    },
+function Index() {
+  const typographySizes = [
+    { label: 'Typography', size: '36', fontClass: 'text-2xl md:text-3xl font-bold' },
+    { label: 'Typography', size: '32', fontClass: 'text-xl md:text-2xl font-semibold' },
+    { label: 'Typography', size: '24', fontClass: 'text-lg md:text-xl font-medium' },
+    { label: 'Typography', size: '20', fontClass: 'text-base md:text-lg font-medium' },
+    { label: 'Typography', size: '16', fontClass: 'text-sm md:text-base font-normal' },
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
-      <section className="relative py-20 px-6 text-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10"></div>
-        <div className="relative max-w-5xl mx-auto">
-          <div className="flex items-center justify-center gap-6 mb-6">
+    <div className="min-h-screen bg-white">
+      <Header />
+      <main className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12">
+        <HeroSection />
+        
+        {/* Category Description */}
+        <section className="py-8 md:py-12">
+          <p
+            className="text-base md:text-lg lg:text-xl font-normal leading-relaxed mb-8 md:mb-12"
+            style={{ fontFamily: FONTS.MONTSERRAT }}
+          >
+            Category: Food & Lifestyle | Mobile App Design ( 1 - Weeks )
+            <br />
+            <br />
+            The Laurienla Cake app was designed to bring the joy of cakes closer
+            to customers by offering a seamless and delightful ordering
+            experience. I crafted the design with a focus on user-friendly
+            navigation, vibrant visuals, and engaging interactions that reflect
+            the celebratory spirit of the brand. This project allowed me to
+            explore how UI/UX design can translate the sensory delight of cakes
+            into a digital experience that feels just as indulgent
+          </p>
+
+          {/* App Screens 1 */}
+          <div className="bg-[#fff6fe] rounded-lg p-4 mb-12">
             <img
-              src="/tanstack-circle-logo.png"
-              alt="TanStack Logo"
-              className="w-24 h-24 md:w-32 md:h-32"
+              src="/vectors/laurienla-screens-1.svg"
+              alt="Laurienla App Screens"
+              className="w-full"
             />
-            <h1 className="text-6xl md:text-7xl font-black text-white [letter-spacing:-0.08em]">
-              <span className="text-gray-300">TANSTACK</span>{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                START
-              </span>
-            </h1>
           </div>
-          <p className="text-2xl md:text-3xl text-gray-300 mb-4 font-light">
-            The framework for next generation AI applications
+        </section>
+
+        {/* Problem Section */}
+        <section className="py-8 md:py-12">
+          <h2
+            className="text-xl md:text-2xl font-normal mb-4 md:mb-6"
+            style={{ fontFamily: FONTS.MONTSERRAT }}
+          >
+            Problem
+          </h2>
+          <p
+            className="text-base md:text-lg lg:text-xl font-normal leading-relaxed"
+            style={{ fontFamily: FONTS.MONTSERRAT }}
+          >
+            Customers often find it difficult to:
+            <br />
+            <br />
+            Browse cake options easily.
+            <br />
+            Customize cakes according to flavors, sizes, or designs.
+            <br />
+            Place quick and seamless orders without confusion.
+            <br />
+            The challenge was to design an app that eliminates these pain points
+            while keeping the experience visually indulgent and emotionally
+            engaging.
           </p>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
-            Full-stack framework powered by TanStack Router for React and Solid.
-            Build modern applications with server functions, streaming, and type
-            safety.
-          </p>
-          <div className="flex flex-col items-center gap-4">
-            <a
-              href="https://tanstack.com/start"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-lg transition-colors shadow-lg shadow-cyan-500/50"
-            >
-              Documentation
-            </a>
-            <p className="text-gray-400 text-sm mt-2">
-              Begin your TanStack Start journey by editing{' '}
-              <code className="px-2 py-1 bg-slate-700 rounded text-cyan-400">
-                /src/routes/index.tsx
-              </code>
-            </p>
+
+          {/* App Screens 2 */}
+          <div className="bg-[#fff6fe] rounded-lg p-4 mt-12">
+            <img
+              src="/vectors/laurienla-screens-2.svg"
+              alt="Laurienla App Screens"
+              className="w-full"
+            />
           </div>
+        </section>
+
+        {/* Research & Insights Section */}
+        <section className="py-8 md:py-12">
+          <h2
+            className="text-xl md:text-2xl font-semibold mb-4 md:mb-6"
+            style={{ fontFamily: FONTS.MONTSERRAT }}
+          >
+            Research & Insights
+          </h2>
+          <p
+            className="text-base md:text-lg lg:text-xl font-semibold leading-relaxed"
+            style={{ fontFamily: FONTS.MONTSERRAT }}
+          >
+            Competitive Analysis: Studied similar food & dessert apps to identify
+            gaps in browsing, customization, and checkout processes.
+            <br />
+            User Needs: Quick access to popular cake options, simple
+            customization features, and reliable ordering.
+            <br />
+            Brand Personality: Laurienla's entrepreneurial spirit, festive
+            energy, and premium feel needed to come through in the design.
+          </p>
+        </section>
+
+        {/* Design Process Section */}
+        <section className="py-8 md:py-12">
+          <h2
+            className="text-xl md:text-2xl font-semibold mb-4 md:mb-6"
+            style={{ fontFamily: FONTS.MONTSERRAT }}
+          >
+            Design Process
+          </h2>
+          <p
+            className="text-base md:text-lg lg:text-xl font-semibold leading-relaxed mb-8 md:mb-12"
+            style={{ fontFamily: FONTS.MONTSERRAT }}
+          >
+            Wireframing: Created low-fidelity sketches to outline the user flow
+            (browse - customize -order - checkout).
+            <br />
+            UI Design: Color Palette: Warm, celebratory tones inspired by cakes
+            and celebrations.
+            <br />
+            Typography: Playful yet elegant fonts to reflect Laurienla's brand.
+            <br />
+            Imagery: High-quality cake visuals to trigger delight and appetite.
+            <br />
+            Prototype: Developed an interactive prototype to simulate browsing,
+            customization, and ordering flows.
+          </p>
+
+          {/* Color Gradient */}
+          <div className="mb-12">
+            <img
+              src="/images/laurienla-color-gradient.png"
+              alt="Color Gradient"
+              className="w-full max-w-md"
+            />
+          </div>
+
+          {/* Typography Samples */}
+          <div className="mb-12">
+            <img
+              src="/images/laurienla-typography-samples.png"
+              alt="Typography Samples"
+              className="w-full max-w-4xl"
+            />
         </div>
       </section>
 
-      <section className="py-16 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10"
+        {/* Typography Section */}
+        <section className="py-8 md:py-12">
+          <div className="flex flex-col gap-4 md:gap-[26px] mb-8 md:mb-12">
+            <h2
+              className="text-2xl md:text-3xl lg:text-4xl font-bold"
+              style={{ fontFamily: FONTS.PLATYPI }}
             >
-              <div className="mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-semibold text-white mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                {feature.description}
-              </p>
+              Platypi
+            </h2>
+            <div className="flex flex-col md:flex-row gap-4 md:gap-[33px]">
+              <div className="flex flex-col gap-4 md:gap-6">
+                {typographySizes.map((item, index) => (
+                  <span
+                    key={index}
+                    className={item.fontClass}
+                    style={{ fontFamily: FONTS.PLATYPI }}
+                  >
+                    {item.label}
+                  </span>
+                ))}
+              </div>
+              <div className="flex flex-col gap-4 md:gap-6">
+                {typographySizes.map((item, index) => (
+                  <span
+                    key={index}
+                    className={`${
+                      index === 0
+                        ? 'text-2xl md:text-3xl lg:text-4xl font-bold'
+                        : index === 1
+                          ? 'text-xl md:text-2xl lg:text-3xl font-bold'
+                          : index === 2
+                            ? 'text-lg md:text-xl lg:text-2xl font-bold'
+                            : index === 3
+                              ? 'text-base md:text-lg lg:text-xl font-bold'
+                              : 'text-sm md:text-base font-bold'
+                    }`}
+                    style={{ fontFamily: FONTS.PLATYPI }}
+                  >
+                    {item.size}
+                  </span>
+                ))}
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+
+          {/* App Screens 3 */}
+          <div className="bg-[#fff6fe] rounded-lg p-4">
+            <img
+              src="/vectors/laurienla-screens-3.svg"
+              alt="Laurienla App Screens"
+              className="w-full"
+            />
+          </div>
+        </section>
+        <CTASection />
+      </main>
+      <Footer />
     </div>
   )
 }

@@ -5,8 +5,7 @@ import {
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
-
-import Header from '../components/Header'
+import { MantineProvider } from '@mantine/core'
 
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 
@@ -29,7 +28,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Application',
       },
     ],
     links: [
@@ -50,8 +49,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <Header />
-        {children}
+        <MantineProvider>
+          {children}
+        </MantineProvider>
         <TanStackDevtools
           config={{
             position: 'bottom-right',
