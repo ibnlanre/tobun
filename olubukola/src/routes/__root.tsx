@@ -2,16 +2,21 @@ import {
   HeadContent,
   Scripts,
   createRootRouteWithContext,
+  Outlet,
+  useLocation,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import { MantineProvider } from '@mantine/core'
+import { useEffect } from 'react'
 
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
-
 import appCss from '../styles.css?url'
+import AOS from 'aos'
 
 import type { QueryClient } from '@tanstack/react-query'
+
+import 'aos/dist/aos.css'
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -28,7 +33,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Application',
+        title: 'Olubukola Tobun Portfolio',
       },
     ],
     links: [
@@ -39,8 +44,34 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     ],
   }),
 
+  component: RootComponent,
   shellComponent: RootDocument,
 })
+
+function RootComponent() {
+  const location = useLocation()
+
+  useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100,
+    })
+
+  }, [])
+
+  useEffect(() => {
+    // Scroll to top smoothly on route change
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }, [location.pathname])
+
+  return <Outlet />
+}
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
