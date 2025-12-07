@@ -5,18 +5,20 @@ import {
   Outlet,
   useLocation,
 } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
+// import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+// import { TanStackDevtools } from '@tanstack/react-devtools'
 import { MantineProvider } from '@mantine/core'
 import { useEffect } from 'react'
 
-import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
+// import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 import appCss from '../styles.css?url'
 import AOS from 'aos'
+import ScrollToTop from '../components/scroll-to-top'
 
 import type { QueryClient } from '@tanstack/react-query'
 
 import 'aos/dist/aos.css'
+import '@mantine/core/styles.css';
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -70,7 +72,12 @@ function RootComponent() {
     })
   }, [location.pathname])
 
-  return <Outlet />
+  return (
+    <>
+      <Outlet />
+      <ScrollToTop />
+    </>
+  )
 }
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -83,7 +90,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <MantineProvider>
           {children}
         </MantineProvider>
-        <TanStackDevtools
+        {/* <TanStackDevtools
           config={{
             position: 'bottom-right',
           }}
@@ -94,7 +101,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             },
             TanStackQueryDevtools,
           ]}
-        />
+        /> */}
         <Scripts />
       </body>
     </html>

@@ -11,8 +11,8 @@ export default function Header({ variant = 'default' }: HeaderProps) {
   return (
     <header className="border-b border-[#eeeeee] shadow-[0px_1px_4px_rgba(71,71,71,0.20)] px-6 md:px-12 py-4 flex items-center justify-between">
       <h1
-        className="text-xl font-medium"
-        style={{ fontFamily: 'Montserrat, sans-serif' }}
+        className=" text-lg sm:text-xl font-medium"
+        style={{ fontFamily: FONTS.MONTSERRAT }}
       >
         Olubukola Tobun Portfolio
       </h1>
@@ -34,7 +34,7 @@ export default function Header({ variant = 'default' }: HeaderProps) {
       ) : (
         <Link
           to={ROUTES.PROFILE}
-          className="flex items-center gap-2 bg-[#ecf4ff] rounded-[25px] px-4 py-2 hover:bg-[#d6e7ff] transition-colors cursor-pointer"
+          className="flex items-center gap-2 bg-[#ecf4ff] rounded-[25px] p-2 sm:px-4 sm:py-2 hover:bg-[#d6e7ff] transition-colors cursor-pointer"
         >
           <img
             src="/images/profile-image.png"
@@ -42,8 +42,8 @@ export default function Header({ variant = 'default' }: HeaderProps) {
             className="w-9 h-9 rounded-full object-cover"
           />
           <span
-            className="text-base font-medium"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
+            className="text-base font-medium hidden sm:block"
+            style={{ fontFamily: FONTS.MONTSERRAT }}
           >
             My Profile
           </span>

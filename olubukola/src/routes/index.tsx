@@ -1,12 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
+import { FONTS } from '../config/constants'
+import { PROJECT_TYPES as ROUTE_PROJECT_TYPES } from '../config/routes'
+
 import Header from '../components/header'
 import Footer from '../components/footer'
 import CTASection from '../components/cta-section'
 import HeroSection from '../components/hero-section'
-import { FONTS } from '../config/constants'
-import { PROJECT_TYPES as ROUTE_PROJECT_TYPES } from '../config/routes'
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -140,7 +141,7 @@ function ProjectCard({ title, image, link }: ProjectCardProps) {
       className="group cursor-pointer"
     >
       <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-        <div className="w-full aspect-[4/3] bg-gray-50 flex items-center justify-center overflow-hidden">
+        <div className="w-full aspect-4/3 bg-gray-50 flex items-center justify-center overflow-hidden">
           <img
             src={image}
             alt={title}

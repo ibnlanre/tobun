@@ -10,7 +10,7 @@ export default function CTASection() {
         Ready to work with me?
       </h2>
 
-      <div className="flex flex-col items-center  justify-center lg:flex-row gap-8 md:gap-12 lg:gap-[120px] bg-[#F7F9FB] rounded-lg p-24">
+      <div className="flex flex-col items-center  justify-center lg:flex-row gap-8 md:gap-12 lg:gap-[120px] bg-[#F7F9FB] rounded-lg sm:p-24 p-6">
         {/* Project Types */}
         <div className="flex flex-col gap-6 md:gap-[29px] max-w-[500px]">
           <div className="flex flex-wrap gap-4 md:gap-[34px]">
