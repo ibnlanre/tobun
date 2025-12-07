@@ -3,29 +3,46 @@ import { ArrowLeft } from 'lucide-react'
 import { useState } from 'react'
 import { ROUTES } from '../config/routes'
 import { PROJECT_TYPES } from '../config/routes'
-import {  FONTS } from '../config/constants'
+import { FONTS } from '../config/constants'
 
 interface HeroSectionProps {
   showBackButton?: boolean
   backTo?: string
   onProjectTypeChange?: (type: string) => void
+  // Controlled mode: if selectedType and onTypeChange are provided, use them
+  selectedType?: string
+  onTypeChange?: (type: string) => void
+  // Customization options
+  tagline?: string
+  wavyUnderline?: boolean
 }
 
 export default function HeroSection({
   showBackButton = false,
   backTo = ROUTES.HOME,
   onProjectTypeChange,
+  selectedType: controlledSelectedType,
+  onTypeChange: controlledOnTypeChange,
+  tagline = 'I turn simple ideas into powerful digital experience',
+  wavyUnderline = true,
 }: HeroSectionProps) {
-  const [selectedType, setSelectedType] = useState<string>(PROJECT_TYPES.MOBILE_APPS)
+  // Use controlled state if provided, otherwise use internal state
+  const [internalSelectedType, setInternalSelectedType] = useState<string>(PROJECT_TYPES.MOBILE_APPS)
+  const selectedType = controlledSelectedType ?? internalSelectedType
+  const isControlled = controlledSelectedType !== undefined && controlledOnTypeChange !== undefined
 
   const handleTypeChange = (type: string) => {
-    setSelectedType(type)
-    onProjectTypeChange?.(type)
+    if (isControlled) {
+      controlledOnTypeChange?.(type)
+    } else {
+      setInternalSelectedType(type)
+      onProjectTypeChange?.(type)
+    }
   }
 
   return (
     <section className="py-8 md:py-16 text-center">
-      <div className="max-w-4xl mx-auto flex flex-col gap-8 md:gap-14">
+      <div className="max-w-4xl mx-auto flex flex-col gap-6">
         <div className="flex flex-col gap-4 md:gap-5">
           <p
             className="text-base md:text-lg lg:text-xl font-medium text-[#807784]"
@@ -33,28 +50,33 @@ export default function HeroSection({
           >
             Welcome Client,
           </p>
-          <div className="flex flex-col gap-4 md:gap-5">
-            <h1
+          <div className="flex flex-col gap-3">
+            <h2
               className="text-xl md:text-2xl lg:text-3xl font-bold px-4"
               style={{ fontFamily: FONTS.MONTSERRAT }}
             >
               Build a beautiful Website/ Apps with me in weeks
-            </h1>
+            </h2>
             <div className="flex items-center justify-center gap-3 md:gap-[18px] flex-wrap px-4">
               <span
-                className="text-lg md:text-xl lg:text-2xl font-bold"
+                className="text-xl md:text-2xl lg:text-3xl font-bold"
                 style={{ fontFamily: FONTS.MONTSERRAT }}
               >
                 Enjoy
               </span>
               <span
-                className="text-lg md:text-xl lg:text-2xl font-normal text-[#0769e0] underline"
-                style={{ fontFamily: FONTS.MOOLI }}
+                className="text-xl md:text-2xl lg:text-3xl font-normal text-[#0769e0] relative"
+                style={{
+                  fontFamily: FONTS.MOOLI,
+                  textDecoration: 'underline',
+                  textDecorationStyle: wavyUnderline ? 'wavy' : 'solid',
+                  textDecorationColor: '#0769e0',
+                }}
               >
                 Free
               </span>
               <span
-                className="text-lg md:text-xl lg:text-2xl font-bold"
+                className="text-xl md:text-2xl lg:text-3xl font-bold"
                 style={{ fontFamily: FONTS.MONTSERRAT }}
               >
                 Animations
@@ -65,18 +87,18 @@ export default function HeroSection({
             className="text-base md:text-lg font-medium text-[#807784] px-4"
             style={{ fontFamily: FONTS.MONTSERRAT }}
           >
-            I turn simple ideas into powerful digital experience
+            {tagline}
           </p>
         </div>
 
         {/* Toggle Buttons */}
-        <div className="flex items-center justify-center gap-4 md:gap-7 bg-[#f5faff] rounded-[50px] px-4 md:px-8 py-2 md:py-4 w-fit mx-auto">
+        <div className="flex items-center justify-center gap-4 md:gap-7 bg-[#f5faff] rounded-[50px] px-4 md:px-6 py-2 md:py-4 w-fit mx-auto">
           <button
             onClick={() => handleTypeChange(PROJECT_TYPES.MOBILE_APPS)}
-            className={`text-base md:text-lg lg:text-xl font-semibold transition-colors px-3 md:px-4 py-1 md:py-2 rounded-full ${
+            className={`text-base md:text-lg lg:text-xl font-semibold transition-colors px-3 md:px-4 py-1 md:py-2 rounded-full cursor-pointer ${
               selectedType === PROJECT_TYPES.MOBILE_APPS
                 ? 'text-[#0769e0] bg-white shadow-sm'
-                : 'text-[#6d7784]'
+                : 'text-[#6d7784] hover:text-[#0769e0]'
             }`}
             style={{ fontFamily: FONTS.MONTSERRAT }}
           >
@@ -84,7 +106,7 @@ export default function HeroSection({
           </button>
           <button
             onClick={() => handleTypeChange(PROJECT_TYPES.WEBSITES)}
-            className={`text-base md:text-lg lg:text-xl font-semibold transition-colors px-3 md:px-4 py-1 md:py-2 rounded-full ${
+            className={`text-base md:text-lg lg:text-xl font-semibold transition-colors px-3 md:px-4 py-1 md:py-2 rounded-full cursor-pointer ${
               selectedType === PROJECT_TYPES.WEBSITES
                 ? 'text-[#0769e0] bg-white shadow-sm'
                 : 'text-[#6d7784]'
@@ -114,4 +136,3 @@ export default function HeroSection({
     </section>
   )
 }
-

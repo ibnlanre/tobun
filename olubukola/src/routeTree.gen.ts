@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TulipAppRouteImport } from './routes/tulip-app'
 import { Route as SwiftRateAppRouteImport } from './routes/swift-rate-app'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as LaurienlaCakeRouteImport } from './routes/laurienla-cake'
 import { Route as GraphicRouteImport } from './routes/graphic'
 import { Route as AtmCardRouteImport } from './routes/atm-card'
 import { Route as IndexRouteImport } from './routes/index'
@@ -29,6 +30,11 @@ const SwiftRateAppRoute = SwiftRateAppRouteImport.update({
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaurienlaCakeRoute = LaurienlaCakeRouteImport.update({
+  id: '/laurienla-cake',
+  path: '/laurienla-cake',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GraphicRoute = GraphicRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/atm-card': typeof AtmCardRoute
   '/graphic': typeof GraphicRoute
+  '/laurienla-cake': typeof LaurienlaCakeRoute
   '/profile': typeof ProfileRoute
   '/swift-rate-app': typeof SwiftRateAppRoute
   '/tulip-app': typeof TulipAppRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/atm-card': typeof AtmCardRoute
   '/graphic': typeof GraphicRoute
+  '/laurienla-cake': typeof LaurienlaCakeRoute
   '/profile': typeof ProfileRoute
   '/swift-rate-app': typeof SwiftRateAppRoute
   '/tulip-app': typeof TulipAppRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/atm-card': typeof AtmCardRoute
   '/graphic': typeof GraphicRoute
+  '/laurienla-cake': typeof LaurienlaCakeRoute
   '/profile': typeof ProfileRoute
   '/swift-rate-app': typeof SwiftRateAppRoute
   '/tulip-app': typeof TulipAppRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/atm-card'
     | '/graphic'
+    | '/laurienla-cake'
     | '/profile'
     | '/swift-rate-app'
     | '/tulip-app'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/atm-card'
     | '/graphic'
+    | '/laurienla-cake'
     | '/profile'
     | '/swift-rate-app'
     | '/tulip-app'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/atm-card'
     | '/graphic'
+    | '/laurienla-cake'
     | '/profile'
     | '/swift-rate-app'
     | '/tulip-app'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AtmCardRoute: typeof AtmCardRoute
   GraphicRoute: typeof GraphicRoute
+  LaurienlaCakeRoute: typeof LaurienlaCakeRoute
   ProfileRoute: typeof ProfileRoute
   SwiftRateAppRoute: typeof SwiftRateAppRoute
   TulipAppRoute: typeof TulipAppRoute
@@ -129,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/laurienla-cake': {
+      id: '/laurienla-cake'
+      path: '/laurienla-cake'
+      fullPath: '/laurienla-cake'
+      preLoaderRoute: typeof LaurienlaCakeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/graphic': {
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AtmCardRoute: AtmCardRoute,
   GraphicRoute: GraphicRoute,
+  LaurienlaCakeRoute: LaurienlaCakeRoute,
   ProfileRoute: ProfileRoute,
   SwiftRateAppRoute: SwiftRateAppRoute,
   TulipAppRoute: TulipAppRoute,
