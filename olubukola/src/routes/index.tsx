@@ -8,6 +8,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import CTASection from '../components/cta-section'
 import HeroSection from '../components/hero-section'
+import { useWindowScroll } from '@mantine/hooks'
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -15,6 +16,7 @@ export const Route = createFileRoute('/')({
 
 function Home() {
   const [selectedType, setSelectedType] = useState<string>(ROUTE_PROJECT_TYPES.MOBILE_APPS)
+  const [_, scrollTo] = useWindowScroll()
 
   const handleTypeChange = (type: string) => {
     setSelectedType(type)
@@ -26,10 +28,7 @@ function Home() {
       const elementPosition = element.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
+      scrollTo({ y: offsetPosition, })
     }
   }
 

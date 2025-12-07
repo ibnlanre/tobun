@@ -19,6 +19,7 @@ import type { QueryClient } from '@tanstack/react-query'
 
 import 'aos/dist/aos.css'
 import '@mantine/core/styles.css';
+import { useWindowScroll } from '@mantine/hooks'
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -52,6 +53,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 
 function RootComponent() {
   const location = useLocation()
+  const [_, scrollTo] = useWindowScroll()
 
   useEffect(() => {
     // Initialize AOS
@@ -66,10 +68,7 @@ function RootComponent() {
 
   useEffect(() => {
     // Scroll to top smoothly on route change
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
+    scrollTo({ y: 0 })
   }, [location.pathname])
 
   return (
