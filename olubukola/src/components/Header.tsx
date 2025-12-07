@@ -2,19 +2,24 @@ import { FONTS } from '@/config/constants'
 import { ROUTES } from '@/config/routes'
 import { Link } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
+import { TypingText } from './typing-text'
 
 interface HeaderProps {
   variant?: 'default' | 'withBack'
 }
 
+
+
 export default function Header({ variant = 'default' }: HeaderProps) {
+  const parts = ['Olubukola', ' Tobun', ' Portfolio']
+
   return (
     <header className="border-b border-[#eeeeee] shadow-[0px_1px_4px_rgba(71,71,71,0.20)] px-6 md:px-12 py-4 flex items-center justify-between">
       <h1
         className=" text-lg sm:text-xl font-medium"
         style={{ fontFamily: FONTS.MONTSERRAT }}
       >
-        Olubukola Tobun Portfolio
+        <TypingText parts={parts} />
       </h1>
 
       {variant === 'withBack' ? (
