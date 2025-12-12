@@ -1,19 +1,13 @@
-import { Link, useRouter, useRouterState } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
-import { useState } from 'react'
-import { PROJECT_TYPES, ROUTES } from '../config/routes'
+import { ROUTES } from '../config/routes'
 import { FONTS } from '../config/constants'
 
 import { ProjectTypeToggle } from './project-type-toggle'
 
-import type { ProjectType } from '../config/routes'
-
 interface HeroSectionProps {
   showBackButton?: boolean
   backTo?: string
-  onProjectTypeChange?: (type: string) => void
-  selectedType?: ProjectType
-  onTypeChange?: (type: ProjectType) => void
   tagline?: string
   wavyUnderline?: boolean
 }
@@ -21,44 +15,9 @@ interface HeroSectionProps {
 export function HeroSection({
   showBackButton = false,
   backTo = ROUTES.HOME,
-  onProjectTypeChange,
-  selectedType: controlledSelectedType,
-  onTypeChange: controlledOnTypeChange,
   tagline = 'I turn simple ideas into powerful digital experience',
   wavyUnderline = true,
 }: HeroSectionProps) {
-  const [internalSelectedType, setInternalSelectedType] = useState<ProjectType>(
-    PROJECT_TYPES.MOBILE_APPS
-  )
-  const selectedType = controlledSelectedType ?? internalSelectedType
-  const isControlled =
-    controlledSelectedType !== undefined && controlledOnTypeChange !== undefined
-
-  const router = useRouter()
-  const isHomeRoute = useRouterState({
-    select: (state) => state.location.pathname === ROUTES.HOME,
-  })
-
-  const handleTypeChange = (type: ProjectType) => {
-    if (!isHomeRoute) {
-      if (!isControlled) {
-        setInternalSelectedType(type)
-      }
-      router.navigate({
-        to: ROUTES.HOME,
-        search: (prev) => ({ ...prev, type }),
-      })
-      return
-    }
-
-    if (isControlled) {
-      controlledOnTypeChange(type)
-    } else {
-      setInternalSelectedType(type)
-      onProjectTypeChange?.(type)
-    }
-  }
-
   return (
     <section className="py-8 md:py-16 text-center">
       <div className="max-w-4xl mx-auto flex flex-col gap-6">
@@ -76,7 +35,7 @@ export function HeroSection({
             >
               Build a beautiful Website/ Apps with me in weeks
             </h2>
-            <div className="flex items-center justify-center gap-3 md:gap-[18px] flex-wrap px-4">
+            <div className="flex items-center justify-center gap-3 md:gap-4.5 flex-wrap px-4">
               <span
                 className="text-xl md:text-2xl lg:text-3xl font-bold"
                 style={{ fontFamily: FONTS.MONTSERRAT }}
@@ -111,10 +70,7 @@ export function HeroSection({
         </div>
 
         {/* Toggle Buttons */}
-        <ProjectTypeToggle
-          selectedType={selectedType}
-          onChange={handleTypeChange}
-        />
+        <ProjectTypeToggle />
       </div>
 
       {/* Back Button */}

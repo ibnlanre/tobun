@@ -16,7 +16,7 @@ export function ScrollToTop() {
             style={{ ...transitionStyles }}
             aria-label="Scroll to top"
           >
-            <ArrowUp size={24} className="md:w-[30px] md:h-[30px] text-white" />
+            <ArrowUp size={24} className="md:size-7.5 text-white" />
           </button>
         )}
       </Transition>

@@ -1,74 +1,45 @@
-import { useCallback, useEffect } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { useWindowScroll } from '@mantine/hooks'
-import { parseAsStringEnum, useQueryState } from 'nuqs'
+import { zodValidator } from '@tanstack/zod-adapter'
+import { z } from 'zod'
+import { useEffect } from 'react'
 import { FONTS } from '../config/constants'
-import { ROUTES, PROJECT_TYPES as ROUTE_PROJECT_TYPES } from '../config/routes'
+import { PROJECT_TYPES, ROUTES } from '../config/routes'
 
-import {Header} from '../components/header'
-import {Footer} from '../components/footer'
-import {CTASection} from '../components/cta-section'
-import {HeroSection} from '../components/hero-section'
+import { Header } from '../components/header'
+import { Footer } from '../components/footer'
+import { CTASection } from '../components/cta-section'
+import { HeroSection } from '../components/hero-section'
+
+const searchSchema = z.object({
+  type: z
+    .enum([PROJECT_TYPES.MOBILE_APPS, PROJECT_TYPES.WEBSITES])
+    .default(PROJECT_TYPES.MOBILE_APPS),
+})
 
 export const Route = createFileRoute('/')({
   component: Home,
-  validateSearch: (search: Record<string, unknown>) => ({
-    ...search,
-    type:
-      typeof search.type === 'string' &&
-      Object.values(ROUTE_PROJECT_TYPES).includes(search.type as "mobile_apps" | "websites")
-        ? search.type
-        : undefined,
-  }),
+  validateSearch: zodValidator(searchSchema),
 })
 
 function Home() {
-  const [selectedType, setSelectedType] = useQueryState(
-    'type',
-    parseAsStringEnum(Object.values(ROUTE_PROJECT_TYPES)).withDefault(
-      ROUTE_PROJECT_TYPES.MOBILE_APPS
-    )
-  )
-  const [_, scrollTo] = useWindowScroll()
-
-  const scrollToTypeSection = useCallback(
-    (type: string) => {
-      const sectionId =
-        type === ROUTE_PROJECT_TYPES.MOBILE_APPS ? 'mobile-apps' : 'websites'
-      const element = document.getElementById(sectionId)
-      if (element) {
-        const headerOffset = 100 // Account for fixed header
-        const elementPosition = element.getBoundingClientRect().top
-        const offsetPosition =
-          elementPosition + window.pageYOffset - headerOffset
-
-        scrollTo({ y: offsetPosition })
-      }
-    },
-    [scrollTo]
-  )
-
-  const handleTypeChange = async (type: "mobile_apps" | "websites") => {
-    await setSelectedType(type)
-  }
+  const { type } = Route.useSearch()
 
   useEffect(() => {
-    scrollToTypeSection(selectedType)
-  }, [scrollToTypeSection, selectedType])
+    const element = document.getElementById(type)
+    if (element) element.scrollIntoView({ behavior: 'smooth' })
+  }, [type])
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12">
+      <main className="max-w-350 mx-auto px-4 sm:px-6 md:px-12">
         <HeroSection
-          selectedType={selectedType}
-          onTypeChange={handleTypeChange}
           tagline="I turn your bold ideas into powerful digital experience"
           wavyUnderline
         />
 
         {/* Mobile Apps Section */}
-        <section id="mobile-apps" className="py-8 md:py-12 scroll-mt-24">
+        <section id="mobile_apps" className="py-8 md:py-12">
           <h2
             className="text-xl md:text-2xl lg:text-3xl font-bold mb-8 md:mb-12"
             style={{ fontFamily: FONTS.MONTSERRAT }}
@@ -79,23 +50,23 @@ function Home() {
             <ProjectCard
               title="Tulip"
               image="/vectors/tulip.svg"
-              link="/tulip-app"
+              link={ROUTES.TULIP_APP}
             />
             <ProjectCard
               title="Swift Rate"
               image="/vectors/swift-rate.svg"
-              link="/swift-rate-app"
+              link={ROUTES.SWIFT_RATE_APP}
             />
             <ProjectCard
               title="Laurienla Cake"
               image="/vectors/laurienla-cake.svg"
-              link="/laurienla-cake"
+              link={ROUTES.LAURIENLA_CAKE}
             />
           </div>
         </section>
 
         {/* Websites Section */}
-        <section id="websites" className="py-8 md:py-12 scroll-mt-24">
+        <section id="websites" className="py-8 md:py-12">
           <h2
             className="text-xl md:text-2xl lg:text-3xl font-bold mb-8 md:mb-12"
             style={{ fontFamily: FONTS.MONTSERRAT }}
