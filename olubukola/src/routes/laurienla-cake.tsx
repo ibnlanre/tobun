@@ -11,11 +11,31 @@ export const Route = createFileRoute('/laurienla-cake')({
 
 function LaurienlaCake() {
   const typographySizes = [
-    { label: 'Typography', size: '36', fontClass: 'text-2xl md:text-3xl font-bold' },
-    { label: 'Typography', size: '32', fontClass: 'text-xl md:text-2xl font-semibold' },
-    { label: 'Typography', size: '24', fontClass: 'text-lg md:text-xl font-medium' },
-    { label: 'Typography', size: '20', fontClass: 'text-base md:text-lg font-medium' },
-    { label: 'Typography', size: '16', fontClass: 'text-sm md:text-base font-normal' },
+    {
+      label: 'Typography',
+      size: '36',
+      fontClass: 'text-2xl md:text-3xl font-bold',
+    },
+    {
+      label: 'Typography',
+      size: '32',
+      fontClass: 'text-xl md:text-2xl font-semibold',
+    },
+    {
+      label: 'Typography',
+      size: '24',
+      fontClass: 'text-lg md:text-xl font-medium',
+    },
+    {
+      label: 'Typography',
+      size: '20',
+      fontClass: 'text-base md:text-lg font-medium',
+    },
+    {
+      label: 'Typography',
+      size: '16',
+      fontClass: 'text-sm md:text-base font-normal',
+    },
   ]
 
   return (
@@ -23,7 +43,7 @@ function LaurienlaCake() {
       <Header />
       <main className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12">
         <HeroSection />
-        
+
         {/* Category Description */}
         <section className="py-8 md:py-12">
           <p
@@ -45,8 +65,8 @@ function LaurienlaCake() {
           {/* App Screens 1 */}
           <div className="bg-[#fff6fe] rounded-lg p-4 mb-12">
             <img
-              src="/vectors/laurienla-screens-1.svg"
-              alt="Laurienla App Screens"
+              src="/vectors/laurienla-cake/screen-1.svg"
+              alt="Laurienla Cake App Screens"
               className="w-full"
             />
           </div>
@@ -81,7 +101,7 @@ function LaurienlaCake() {
           {/* App Screens 2 */}
           <div className="bg-[#fff6fe] rounded-lg p-4 mt-12">
             <img
-              src="/vectors/laurienla-screens-2.svg"
+              src="/vectors/laurienla-cake/screen-2.svg"
               alt="Laurienla App Screens"
               className="w-full"
             />
@@ -100,8 +120,8 @@ function LaurienlaCake() {
             className="text-base md:text-lg lg:text-xl font-semibold leading-relaxed"
             style={{ fontFamily: FONTS.MONTSERRAT }}
           >
-            Competitive Analysis: Studied similar food & dessert apps to identify
-            gaps in browsing, customization, and checkout processes.
+            Competitive Analysis: Studied similar food & dessert apps to
+            identify gaps in browsing, customization, and checkout processes.
             <br />
             User Needs: Quick access to popular cake options, simple
             customization features, and reliable ordering.
@@ -153,8 +173,8 @@ function LaurienlaCake() {
               alt="Typography Samples"
               className="w-full max-w-4xl"
             />
-        </div>
-      </section>
+          </div>
+        </section>
 
         {/* Typography Section */}
         <section className="py-8 md:py-12">
@@ -204,7 +224,7 @@ function LaurienlaCake() {
           {/* App Screens 3 */}
           <div className="bg-[#fff6fe] rounded-lg p-4">
             <img
-              src="/vectors/laurienla-screens-3.svg"
+              src="/vectors/laurienla-cake/screen-3.svg"
               alt="Laurienla App Screens"
               className="w-full"
             />

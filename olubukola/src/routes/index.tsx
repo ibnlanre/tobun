@@ -1,36 +1,60 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { Link } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useCallback, useEffect } from 'react'
+import { Link, createFileRoute } from '@tanstack/react-router'
+import { useWindowScroll } from '@mantine/hooks'
+import { parseAsStringEnum, useQueryState } from 'nuqs'
 import { FONTS } from '../config/constants'
-import { PROJECT_TYPES as ROUTE_PROJECT_TYPES } from '../config/routes'
+import { ROUTES, PROJECT_TYPES as ROUTE_PROJECT_TYPES } from '../config/routes'
 
 import Header from '../components/header'
 import Footer from '../components/footer'
 import CTASection from '../components/cta-section'
 import HeroSection from '../components/hero-section'
-import { useWindowScroll } from '@mantine/hooks'
 
 export const Route = createFileRoute('/')({
   component: Home,
+  validateSearch: (search: Record<string, unknown>) => ({
+    ...search,
+    type:
+      typeof search.type === 'string' &&
+      Object.values(ROUTE_PROJECT_TYPES).includes(search.type)
+        ? search.type
+        : undefined,
+  }),
 })
 
 function Home() {
-  const [selectedType, setSelectedType] = useState<string>(ROUTE_PROJECT_TYPES.MOBILE_APPS)
+  const [selectedType, setSelectedType] = useQueryState(
+    'type',
+    parseAsStringEnum(Object.values(ROUTE_PROJECT_TYPES)).withDefault(
+      ROUTE_PROJECT_TYPES.MOBILE_APPS
+    )
+  )
   const [_, scrollTo] = useWindowScroll()
 
-  const handleTypeChange = (type: string) => {
-    setSelectedType(type)
-    // Scroll to the appropriate section
-    const sectionId = type === ROUTE_PROJECT_TYPES.MOBILE_APPS ? 'mobile-apps' : 'websites'
-    const element = document.getElementById(sectionId)
-    if (element) {
-      const headerOffset = 100 // Account for fixed header
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+  const scrollToTypeSection = useCallback(
+    (type: string) => {
+      const sectionId =
+        type === ROUTE_PROJECT_TYPES.MOBILE_APPS ? 'mobile-apps' : 'websites'
+      const element = document.getElementById(sectionId)
+      if (element) {
+        const headerOffset = 100 // Account for fixed header
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerOffset
 
-      scrollTo({ y: offsetPosition, })
-    }
+        scrollTo({ y: offsetPosition })
+      }
+    },
+    [scrollTo]
+  )
+
+  const handleTypeChange = async (type: string) => {
+    await setSelectedType(type)
   }
+
+  useEffect(() => {
+    scrollToTypeSection(selectedType)
+  }, [scrollToTypeSection, selectedType])
 
   return (
     <div className="min-h-screen bg-white">
@@ -82,17 +106,17 @@ function Home() {
             <ProjectCard
               title="Helkenma"
               image="/vectors/helkenma.svg"
-              link="#"
+              link={ROUTES.HEIKENMA_SOLAR}
             />
             <ProjectCard
               title="Ladywid"
               image="/vectors/ladywid.svg"
-              link="#"
+              link={ROUTES.LADYWID}
             />
             <ProjectCard
               title="Little Luminaries"
               image="/vectors/little-luminaries.svg"
-              link="#"
+              link={ROUTES.LITTLE_LUMINARIES}
             />
           </div>
         </section>
@@ -109,14 +133,13 @@ function Home() {
             <ProjectCard
               title="ATM Card"
               image="/vectors/atm-card.svg"
-              link="/atm-card"
+              link={ROUTES.ATM_CARD}
             />
             <ProjectCard
               title="Illustration"
               image="/vectors/illustration.svg"
-              link="/graphic"
+              link={ROUTES.GRAPHIC}
             />
-          
           </div>
         </section>
 
@@ -135,10 +158,7 @@ interface ProjectCardProps {
 
 function ProjectCard({ title, image, link }: ProjectCardProps) {
   return (
-    <Link
-      to={link}
-      className="group cursor-pointer"
-    >
+    <Link to={link} className="group cursor-pointer">
       <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
         <div className="w-full aspect-4/3 bg-gray-50 flex items-center justify-center overflow-hidden">
           <img

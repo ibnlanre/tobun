@@ -9,7 +9,6 @@ import { FONTS } from '../config/constants'
 export const Route = createFileRoute('/tulip-app')({ component: TulipApp })
 
 function TulipApp() {
-
   const typographySizes = [
     { label: 'Typography', size: '36' },
     { label: 'Typography', size: '32' },
@@ -30,8 +29,9 @@ function TulipApp() {
             className="text-base md:text-lg lg:text-xl font-normal leading-relaxed mb-8 md:mb-12"
             style={{ fontFamily: FONTS.MONTSERRAT }}
           >
-            Category: Food & Lifestyle | Mobile App Design ( 3 - Weeks )
-            <br />
+            <p className="text-base md:text-lg lg:text-xl font-semibold leading-relaxed mb-8">
+              Category: Food & Lifestyle | Mobile App Design ( 3 - Weeks )
+            </p>
             <br />
             Tulip is a mobile app designed to make ordering food simple, fast,
             and enjoyable. The goal was to build a platform where users can
@@ -42,7 +42,7 @@ function TulipApp() {
           {/* App Screens 1 */}
           <div className="bg-[#fff6fe] rounded-lg p-4 mb-12">
             <img
-              src="/vectors/tulip-screens-1.svg"
+              src="/vectors/tulip-app/screen-1.svg"
               alt="Tulip App Screens"
               className="w-full"
             />
@@ -77,7 +77,7 @@ function TulipApp() {
           {/* App Screens 2 */}
           <div className="bg-[#fff6fe] rounded-lg p-4 mt-12">
             <img
-              src="/vectors/tulip-screens-2.svg"
+              src="/vectors/tulip-app/screen-2.svg"
               alt="Tulip App Screens"
               className="w-full"
             />
@@ -138,7 +138,7 @@ function TulipApp() {
           {/* App Screens 3 */}
           <div className="bg-[#fff6fe] rounded-lg p-4 mb-12">
             <img
-              src="/vectors/tulip-screens-3.svg"
+              src="/vectors/tulip-app/screen-3.svg"
               alt="Tulip App Screens"
               className="w-full"
             />
@@ -147,7 +147,7 @@ function TulipApp() {
           {/* App Screens 4 */}
           <div className="bg-[#fff6fe] rounded-lg p-4">
             <img
-              src="/vectors/tulip-screens-4.svg"
+              src="/vectors/tulip-app/screen-4.svg"
               alt="Tulip App Screens"
               className="w-full"
             />
@@ -160,7 +160,7 @@ function TulipApp() {
             {/* Color Palette */}
             <div>
               <img
-                src="/vectors/color-palette.svg"
+                src="/vectors/tulip-app/color-palette.svg"
                 alt="Color Palette"
                 className="w-full max-w-md"
               />

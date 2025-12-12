@@ -29,10 +29,10 @@ export const SOCIAL_LINKS = [
 ] as const
 
 export const PROJECT_TYPES = [
-  { name: 'App',  color: 'bg-[#E6E6FA]' },
+  { name: 'App', color: 'bg-[#E6E6FA]' },
   { name: 'Website', color: 'bg-[#fff2e5]' },
-  { name: 'Graphics',  color: 'bg-[#FFE6E6]' },
-  { name: 'Redesign',  color: 'bg-[#E6FFE6]' },
+  { name: 'Graphics', color: 'bg-[#FFE6E6]' },
+  { name: 'Redesign', color: 'bg-[#E6FFE6]' },
 ] as const
 
 export const SKILLS = [

@@ -2,43 +2,56 @@ import { createFileRoute } from '@tanstack/react-router'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import CTASection from '../components/cta-section'
-import { SKILLS, SOCIAL_LINKS, FONTS, MAX_WIDTH_CONTENT } from '../config/constants'
+import {
+  FONTS,
+  MAX_WIDTH_CONTENT,
+  SKILLS,
+  SOCIAL_LINKS,
+} from '../config/constants'
 
 export const Route = createFileRoute('/profile')({ component: Profile })
 
 function Profile() {
   return (
     <div className="min-h-screen bg-white">
-      <Header variant="withBack"  />
+      <Header variant="withBack" />
 
-      <main className={`max-w-[${MAX_WIDTH_CONTENT}] mx-auto px-4 sm:px-6 md:px-12 py-8 md:py-12`}>
+      <main
+        className={`max-w-[${MAX_WIDTH_CONTENT}] mx-auto px-4 sm:px-6 md:px-12 py-8 md:py-12`}
+      >
         {/* Profile Introduction Section */}
         <section className="flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-[138px] mb-12 md:mb-20">
           {/* Profile Image */}
-          <div className="relative w-full lg:w-fit mx-auto lg:mx-0 shrink-0" style={{ paddingRight: '16px', paddingTop: '12px' }}>
-           {/* White frame (closely following image) */}
-            <div 
+          <div
+            className="relative w-full lg:w-fit mx-auto lg:mx-0 shrink-0"
+            style={{ paddingRight: '16px', paddingTop: '12px' }}
+          >
+            {/* White frame (closely following image) */}
+            <div
               className="absolute rounded-[22px] border-2 border-gray-200 bg-white"
-              style={{ 
+              style={{
                 aspectRatio: '454/470',
                 width: '100%',
                 maxWidth: '454px',
                 top: '-10px',
                 right: '-10px',
-                zIndex: 1
+                zIndex: 1,
               }}
             />
 
             {/* Main image container */}
-            <div className="relative rounded-[22px] overflow-hidden w-full max-w-[454px] mx-auto lg:mx-0 lg:w-[454px]" style={{ aspectRatio: '454/470', zIndex: 3 }}>
+            <div
+              className="relative rounded-[22px] overflow-hidden w-full max-w-[454px] mx-auto lg:mx-0 lg:w-[454px]"
+              style={{ aspectRatio: '454/470', zIndex: 3 }}
+            >
               <img
                 src="/images/profile-image.png"
                 alt="Olubukola Tobun - Product Designer"
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-black/10 backdrop-blur-sm px-6 md:px-8 py-3 md:py-4 rounded-b-[22px]">
-                <span 
-                  className="text-white text-[20px] md:text-[28px] lg:text-[32px] font-semibold leading-tight block text-center" 
+                <span
+                  className="text-white text-[20px] md:text-[28px] lg:text-[32px] font-semibold leading-tight block text-center"
                   style={{ fontFamily: FONTS.INTER }}
                 >
                   She/Her
@@ -49,14 +62,14 @@ function Profile() {
 
           {/* Introduction Text */}
           <div className="flex-1 flex flex-col gap-[16px] md:gap-[20px] lg:gap-[24px]">
-            <h2 
-              className="text-[28px] md:text-[32px] lg:text-[36px] font-semibold uppercase leading-tight" 
+            <h2
+              className="text-[28px] md:text-[32px] lg:text-[36px] font-semibold uppercase leading-tight"
               style={{ fontFamily: FONTS.MONTSERRAT }}
             >
               INTRODUCTION
             </h2>
-            <p 
-              className="text-[18px] md:text-[21px] lg:text-[24px] font-medium text-[#6b6969] leading-relaxed" 
+            <p
+              className="text-[18px] md:text-[21px] lg:text-[24px] font-medium text-[#6b6969] leading-relaxed"
               style={{ fontFamily: FONTS.MONTSERRAT }}
             >
               Tobun Bukola is a passionate Product Designer who thrives on
@@ -74,7 +87,10 @@ function Profile() {
 
         {/* Software Tools Section */}
         <section className="mb-12 md:mb-16 lg:mb-[73px]">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold uppercase mb-4 md:mb-5" style={{ fontFamily: FONTS.MONTSERRAT }}>
+          <h2
+            className="text-xl md:text-2xl lg:text-3xl font-semibold uppercase mb-4 md:mb-5"
+            style={{ fontFamily: FONTS.MONTSERRAT }}
+          >
             SOFTWARE TOOLS
           </h2>
           <img
@@ -86,7 +102,10 @@ function Profile() {
 
         {/* Connect With Me Section */}
         <section className="mb-12 md:mb-16 lg:mb-[73px]">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold uppercase mb-4 md:mb-5" style={{ fontFamily: FONTS.MONTSERRAT }}>
+          <h2
+            className="text-xl md:text-2xl lg:text-3xl font-semibold uppercase mb-4 md:mb-5"
+            style={{ fontFamily: FONTS.MONTSERRAT }}
+          >
             Connect with me
           </h2>
           <div className="flex flex-wrap gap-3 md:gap-4">
@@ -107,12 +126,18 @@ function Profile() {
 
         {/* Technical Skills Section */}
         <section className="mb-12 md:mb-16 lg:mb-[73px]">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold uppercase mb-4 md:mb-5" style={{ fontFamily: FONTS.MONTSERRAT }}>
+          <h2
+            className="text-xl md:text-2xl lg:text-3xl font-semibold uppercase mb-4 md:mb-5"
+            style={{ fontFamily: FONTS.MONTSERRAT }}
+          >
             Technical Skills
           </h2>
           <div className="flex flex-col gap-4 md:gap-5">
             {SKILLS.map((row, rowIndex) => (
-              <div key={rowIndex} className="flex flex-wrap gap-3 md:gap-[14px]">
+              <div
+                key={rowIndex}
+                className="flex flex-wrap gap-3 md:gap-[14px]"
+              >
                 {row.map((skill) => (
                   <span
                     key={skill}

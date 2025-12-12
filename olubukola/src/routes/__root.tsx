@@ -1,25 +1,27 @@
 import {
   HeadContent,
+  Outlet,
   Scripts,
   createRootRouteWithContext,
-  Outlet,
   useLocation,
 } from '@tanstack/react-router'
 // import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 // import { TanStackDevtools } from '@tanstack/react-devtools'
 import { MantineProvider } from '@mantine/core'
+import { useWindowScroll } from '@mantine/hooks'
 import { useEffect } from 'react'
+import { NuqsAdapter } from 'nuqs/adapters/tanstack-router'
 
 // import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
-import appCss from '../styles.css?url'
 import AOS from 'aos'
+import appCss from '../styles.css?url'
 import ScrollToTop from '../components/scroll-to-top'
 
 import type { QueryClient } from '@tanstack/react-query'
 
 import 'aos/dist/aos.css'
-import '@mantine/core/styles.css';
-import { useWindowScroll } from '@mantine/hooks'
+import '@mantine/core/styles.css'
+import '@mantine/carousel/styles.css'
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -63,7 +65,6 @@ function RootComponent() {
       once: true,
       offset: 100,
     })
-
   }, [])
 
   useEffect(() => {
@@ -73,8 +74,10 @@ function RootComponent() {
 
   return (
     <>
-      <Outlet />
-      <ScrollToTop />
+      <NuqsAdapter>
+        <Outlet />
+        <ScrollToTop />
+      </NuqsAdapter>
     </>
   )
 }
@@ -86,9 +89,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <MantineProvider>
-          {children}
-        </MantineProvider>
+        <MantineProvider>{children}</MantineProvider>
         {/* <TanStackDevtools
           config={{
             position: 'bottom-right',

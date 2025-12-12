@@ -1,14 +1,12 @@
-import { FONTS } from '@/config/constants'
-import { ROUTES } from '@/config/routes'
 import { Link } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { TypingText } from './typing-text'
+import { ROUTES } from '@/config/routes'
+import { FONTS } from '@/config/constants'
 
 interface HeaderProps {
   variant?: 'default' | 'withBack'
 }
-
-
 
 export default function Header({ variant = 'default' }: HeaderProps) {
   const parts = ['Olubukola', ' Tobun', ' Portfolio']

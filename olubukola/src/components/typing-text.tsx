@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"
+import { useEffect, useState } from 'react'
 
-export function TypingText({ parts }: { parts: string[] }) {
+export function TypingText({ parts }: { parts: Array<string> }) {
   const [displayedText, setDisplayedText] = useState('')
   const [currentPartIndex, setCurrentPartIndex] = useState(0)
   const [currentCharIndex, setCurrentCharIndex] = useState(0)
@@ -25,17 +25,16 @@ export function TypingText({ parts }: { parts: string[] }) {
     }
 
     const currentPart = parts[currentPartIndex]
-    
+
     if (currentCharIndex < currentPart.length) {
       // Still typing current part
       const timeout = setTimeout(() => {
-        const accumulatedText = parts
-          .slice(0, currentPartIndex)
-          .join('')
-        const newText = accumulatedText + currentPart.slice(0, currentCharIndex + 1)
+        const accumulatedText = parts.slice(0, currentPartIndex).join('')
+        const newText =
+          accumulatedText + currentPart.slice(0, currentCharIndex + 1)
         setDisplayedText(newText)
         setCurrentCharIndex((prev) => prev + 1)
-      }, 100) 
+      }, 100)
 
       return () => clearTimeout(timeout)
     } else {
@@ -47,7 +46,7 @@ export function TypingText({ parts }: { parts: string[] }) {
         } else {
           setIsComplete(true)
         }
-      }, 300) 
+      }, 300)
 
       return () => clearTimeout(timeout)
     }

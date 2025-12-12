@@ -12,8 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TulipAppRouteImport } from './routes/tulip-app'
 import { Route as SwiftRateAppRouteImport } from './routes/swift-rate-app'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as LittleLuminariesRouteImport } from './routes/little-luminaries'
 import { Route as LaurienlaCakeRouteImport } from './routes/laurienla-cake'
-import { Route as GraphicRouteImport } from './routes/graphic'
+import { Route as IllustrationRouteImport } from './routes/illustration'
+import { Route as HeikenmaSolarRouteImport } from './routes/heikenma-solar'
 import { Route as AtmCardRouteImport } from './routes/atm-card'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -32,14 +34,24 @@ const ProfileRoute = ProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LittleLuminariesRoute = LittleLuminariesRouteImport.update({
+  id: '/little-luminaries',
+  path: '/little-luminaries',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LaurienlaCakeRoute = LaurienlaCakeRouteImport.update({
   id: '/laurienla-cake',
   path: '/laurienla-cake',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GraphicRoute = GraphicRouteImport.update({
-  id: '/graphic',
-  path: '/graphic',
+const IllustrationRoute = IllustrationRouteImport.update({
+  id: '/illustration',
+  path: '/illustration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeikenmaSolarRoute = HeikenmaSolarRouteImport.update({
+  id: '/heikenma-solar',
+  path: '/heikenma-solar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AtmCardRoute = AtmCardRouteImport.update({
@@ -56,8 +68,10 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/atm-card': typeof AtmCardRoute
-  '/graphic': typeof GraphicRoute
+  '/heikenma-solar': typeof HeikenmaSolarRoute
+  '/illustration': typeof IllustrationRoute
   '/laurienla-cake': typeof LaurienlaCakeRoute
+  '/little-luminaries': typeof LittleLuminariesRoute
   '/profile': typeof ProfileRoute
   '/swift-rate-app': typeof SwiftRateAppRoute
   '/tulip-app': typeof TulipAppRoute
@@ -65,8 +79,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/atm-card': typeof AtmCardRoute
-  '/graphic': typeof GraphicRoute
+  '/heikenma-solar': typeof HeikenmaSolarRoute
+  '/illustration': typeof IllustrationRoute
   '/laurienla-cake': typeof LaurienlaCakeRoute
+  '/little-luminaries': typeof LittleLuminariesRoute
   '/profile': typeof ProfileRoute
   '/swift-rate-app': typeof SwiftRateAppRoute
   '/tulip-app': typeof TulipAppRoute
@@ -75,8 +91,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/atm-card': typeof AtmCardRoute
-  '/graphic': typeof GraphicRoute
+  '/heikenma-solar': typeof HeikenmaSolarRoute
+  '/illustration': typeof IllustrationRoute
   '/laurienla-cake': typeof LaurienlaCakeRoute
+  '/little-luminaries': typeof LittleLuminariesRoute
   '/profile': typeof ProfileRoute
   '/swift-rate-app': typeof SwiftRateAppRoute
   '/tulip-app': typeof TulipAppRoute
@@ -86,8 +104,10 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/atm-card'
-    | '/graphic'
+    | '/heikenma-solar'
+    | '/illustration'
     | '/laurienla-cake'
+    | '/little-luminaries'
     | '/profile'
     | '/swift-rate-app'
     | '/tulip-app'
@@ -95,8 +115,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/atm-card'
-    | '/graphic'
+    | '/heikenma-solar'
+    | '/illustration'
     | '/laurienla-cake'
+    | '/little-luminaries'
     | '/profile'
     | '/swift-rate-app'
     | '/tulip-app'
@@ -104,8 +126,10 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/atm-card'
-    | '/graphic'
+    | '/heikenma-solar'
+    | '/illustration'
     | '/laurienla-cake'
+    | '/little-luminaries'
     | '/profile'
     | '/swift-rate-app'
     | '/tulip-app'
@@ -114,8 +138,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AtmCardRoute: typeof AtmCardRoute
-  GraphicRoute: typeof GraphicRoute
+  HeikenmaSolarRoute: typeof HeikenmaSolarRoute
+  IllustrationRoute: typeof IllustrationRoute
   LaurienlaCakeRoute: typeof LaurienlaCakeRoute
+  LittleLuminariesRoute: typeof LittleLuminariesRoute
   ProfileRoute: typeof ProfileRoute
   SwiftRateAppRoute: typeof SwiftRateAppRoute
   TulipAppRoute: typeof TulipAppRoute
@@ -144,6 +170,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/little-luminaries': {
+      id: '/little-luminaries'
+      path: '/little-luminaries'
+      fullPath: '/little-luminaries'
+      preLoaderRoute: typeof LittleLuminariesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/laurienla-cake': {
       id: '/laurienla-cake'
       path: '/laurienla-cake'
@@ -151,11 +184,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LaurienlaCakeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/graphic': {
-      id: '/graphic'
-      path: '/graphic'
-      fullPath: '/graphic'
-      preLoaderRoute: typeof GraphicRouteImport
+    '/illustration': {
+      id: '/illustration'
+      path: '/illustration'
+      fullPath: '/illustration'
+      preLoaderRoute: typeof IllustrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/heikenma-solar': {
+      id: '/heikenma-solar'
+      path: '/heikenma-solar'
+      fullPath: '/heikenma-solar'
+      preLoaderRoute: typeof HeikenmaSolarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/atm-card': {
@@ -178,8 +218,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AtmCardRoute: AtmCardRoute,
-  GraphicRoute: GraphicRoute,
+  HeikenmaSolarRoute: HeikenmaSolarRoute,
+  IllustrationRoute: IllustrationRoute,
   LaurienlaCakeRoute: LaurienlaCakeRoute,
+  LittleLuminariesRoute: LittleLuminariesRoute,
   ProfileRoute: ProfileRoute,
   SwiftRateAppRoute: SwiftRateAppRoute,
   TulipAppRoute: TulipAppRoute,

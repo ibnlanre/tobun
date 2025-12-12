@@ -9,7 +9,6 @@ import { FONTS } from '../config/constants'
 export const Route = createFileRoute('/atm-card')({ component: ATMCard })
 
 function ATMCard() {
-
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -22,9 +21,10 @@ function ATMCard() {
             className="text-base md:text-lg lg:text-xl xl:text-2xl font-normal mb-6 md:mb-8 max-w-6xl"
             style={{ fontFamily: FONTS.MONTSERRAT }}
           >
-            ATM Card Redesign Concept for: Better Readability, Better Experience
-            ( 24 Hours)
-            <br />
+            <p className="text-base md:text-lg lg:text-xl font-semibold leading-relaxed">
+              ATM Card Redesign Concept for: Better Readability, Better
+              Experience ( 24 Hours)
+            </p>
             <br />
             ATM cards are a part of everyday life, yet many designs often
             overlook readability and visual harmony. For this project, I

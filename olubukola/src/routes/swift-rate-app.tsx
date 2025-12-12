@@ -11,13 +11,32 @@ export const Route = createFileRoute('/swift-rate-app')({
 })
 
 function SwiftRateApp() {
-
   const typographySizes = [
-    { label: 'Typography', size: '36', fontClass: 'text-2xl md:text-3xl font-bold' },
-    { label: 'Typography', size: '32', fontClass: 'text-xl md:text-2xl font-semibold' },
-    { label: 'Typography', size: '24', fontClass: 'text-lg md:text-xl font-medium' },
-    { label: 'Typography', size: '20', fontClass: 'text-base md:text-lg font-medium' },
-    { label: 'Typography', size: '16', fontClass: 'text-sm md:text-base font-normal' },
+    {
+      label: 'Typography',
+      size: '36',
+      fontClass: 'text-2xl md:text-3xl font-bold',
+    },
+    {
+      label: 'Typography',
+      size: '32',
+      fontClass: 'text-xl md:text-2xl font-semibold',
+    },
+    {
+      label: 'Typography',
+      size: '24',
+      fontClass: 'text-lg md:text-xl font-medium',
+    },
+    {
+      label: 'Typography',
+      size: '20',
+      fontClass: 'text-base md:text-lg font-medium',
+    },
+    {
+      label: 'Typography',
+      size: '16',
+      fontClass: 'text-sm md:text-base font-normal',
+    },
   ]
 
   return (
@@ -48,7 +67,7 @@ function SwiftRateApp() {
           {/* App Screens 1 */}
           <div className="bg-[#e3ecfe] rounded-lg p-4 mb-12">
             <img
-              src="/vectors/swift-rate-screens-1.svg"
+              src="/vectors/swift-rate/screen-1.svg"
               alt="Swift Rate App Screens"
               className="w-full"
             />
@@ -83,7 +102,7 @@ function SwiftRateApp() {
           {/* App Screens 2 */}
           <div className="bg-[#e3ecfe] rounded-lg p-4 mt-12">
             <img
-              src="/vectors/swift-rate-screens-2.svg"
+              src="/vectors/swift-rate/screen-2.svg"
               alt="Swift Rate App Screens"
               className="w-full"
             />
@@ -143,7 +162,7 @@ function SwiftRateApp() {
           {/* App Screens 3 */}
           <div className="bg-[#e3ecfe] rounded-lg p-4">
             <img
-              src="/vectors/swift-rate-screens-3.svg"
+              src="/vectors/swift-rate/screen-3.svg"
               alt="Swift Rate App Screens"
               className="w-full"
             />
@@ -156,7 +175,7 @@ function SwiftRateApp() {
             {/* Color Palette */}
             <div>
               <img
-                src="/vectors/swift-rate-color-palette.svg"
+                src="/vectors/swift-rate/color-palette.svg"
                 alt="Color Palette"
                 className="w-full max-w-md"
               />

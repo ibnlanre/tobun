@@ -1,18 +1,17 @@
-import { Link } from '@tanstack/react-router'
+import { Link, useRouter, useRouterState } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { useState } from 'react'
-import { ROUTES } from '../config/routes'
-import { PROJECT_TYPES } from '../config/routes'
+import { PROJECT_TYPES, ROUTES } from '../config/routes'
 import { FONTS } from '../config/constants'
+
+import ProjectTypeToggle from './project-type-toggle'
 
 interface HeroSectionProps {
   showBackButton?: boolean
   backTo?: string
   onProjectTypeChange?: (type: string) => void
-  // Controlled mode: if selectedType and onTypeChange are provided, use them
   selectedType?: string
   onTypeChange?: (type: string) => void
-  // Customization options
   tagline?: string
   wavyUnderline?: boolean
 }
@@ -26,14 +25,32 @@ export default function HeroSection({
   tagline = 'I turn simple ideas into powerful digital experience',
   wavyUnderline = true,
 }: HeroSectionProps) {
-  // Use controlled state if provided, otherwise use internal state
-  const [internalSelectedType, setInternalSelectedType] = useState<string>(PROJECT_TYPES.MOBILE_APPS)
+  const [internalSelectedType, setInternalSelectedType] = useState<string>(
+    PROJECT_TYPES.MOBILE_APPS
+  )
   const selectedType = controlledSelectedType ?? internalSelectedType
-  const isControlled = controlledSelectedType !== undefined && controlledOnTypeChange !== undefined
+  const isControlled =
+    controlledSelectedType !== undefined && controlledOnTypeChange !== undefined
+
+  const router = useRouter()
+  const isHomeRoute = useRouterState({
+    select: (state) => state.location.pathname === ROUTES.HOME,
+  })
 
   const handleTypeChange = (type: string) => {
+    if (!isHomeRoute) {
+      if (!isControlled) {
+        setInternalSelectedType(type)
+      }
+      router.navigate({
+        to: ROUTES.HOME,
+        search: (prev) => ({ ...prev, type }),
+      })
+      return
+    }
+
     if (isControlled) {
-      controlledOnTypeChange?.(type)
+      controlledOnTypeChange(type)
     } else {
       setInternalSelectedType(type)
       onProjectTypeChange?.(type)
@@ -92,30 +109,10 @@ export default function HeroSection({
         </div>
 
         {/* Toggle Buttons */}
-        <div className="flex items-center justify-center gap-4 md:gap-7 bg-[#f5faff] rounded-[50px] px-4 md:px-6 py-2 md:py-4 w-fit mx-auto">
-          <button
-            onClick={() => handleTypeChange(PROJECT_TYPES.MOBILE_APPS)}
-            className={`text-base md:text-lg lg:text-xl font-semibold transition-colors px-3 md:px-4 py-1 md:py-2 rounded-full cursor-pointer ${
-              selectedType === PROJECT_TYPES.MOBILE_APPS
-                ? 'text-[#0769e0] bg-white shadow-sm'
-                : 'text-[#6d7784] hover:text-[#0769e0]'
-            }`}
-            style={{ fontFamily: FONTS.MONTSERRAT }}
-          >
-            Mobile Apps
-          </button>
-          <button
-            onClick={() => handleTypeChange(PROJECT_TYPES.WEBSITES)}
-            className={`text-base md:text-lg lg:text-xl font-semibold transition-colors px-3 md:px-4 py-1 md:py-2 rounded-full cursor-pointer ${
-              selectedType === PROJECT_TYPES.WEBSITES
-                ? 'text-[#0769e0] bg-white shadow-sm'
-                : 'text-[#6d7784]'
-            }`}
-            style={{ fontFamily: FONTS.MONTSERRAT }}
-          >
-            Websites
-          </button>
-        </div>
+        <ProjectTypeToggle
+          selectedType={selectedType}
+          onChange={handleTypeChange}
+        />
       </div>
 
       {/* Back Button */}
