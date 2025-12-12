@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import Header from '../components/header'
-import Footer from '../components/footer'
-import CTASection from '../components/cta-section'
+import {Header} from '../components/header'
+import {Footer} from '../components/footer'
+import {CTASection} from '../components/cta-section'
 import {
   FONTS,
   MAX_WIDTH_CONTENT,
@@ -61,7 +61,7 @@ function Profile() {
           </div>
 
           {/* Introduction Text */}
-          <div className="flex-1 flex flex-col gap-[16px] md:gap-[20px] lg:gap-[24px]">
+          <div className="flex-1 flex flex-col gap-4 md:gap-5 lg:gap-6">
             <h2
               className="text-[28px] md:text-[32px] lg:text-[36px] font-semibold uppercase leading-tight"
               style={{ fontFamily: FONTS.MONTSERRAT }}
@@ -136,7 +136,7 @@ function Profile() {
             {SKILLS.map((row, rowIndex) => (
               <div
                 key={rowIndex}
-                className="flex flex-wrap gap-3 md:gap-[14px]"
+                className="flex flex-wrap gap-3 md:gap-3.5"
               >
                 {row.map((skill) => (
                   <span

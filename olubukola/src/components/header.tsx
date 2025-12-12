@@ -8,7 +8,7 @@ interface HeaderProps {
   variant?: 'default' | 'withBack'
 }
 
-export default function Header({ variant = 'default' }: HeaderProps) {
+export function Header({ variant = 'default' }: HeaderProps) {
   const parts = ['Olubukola', ' Tobun', ' Portfolio']
 
   return (

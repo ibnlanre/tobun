@@ -2,7 +2,7 @@ import { ArrowUp } from 'lucide-react'
 import { Affix, Transition } from '@mantine/core'
 import { useWindowScroll } from '@mantine/hooks'
 
-export default function ScrollToTop() {
+export function ScrollToTop() {
   const [scroll, scrollTo] = useWindowScroll()
   const showButton = scroll.y > 100 // Show after scrolling 100px
 

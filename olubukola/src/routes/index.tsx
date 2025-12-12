@@ -5,10 +5,10 @@ import { parseAsStringEnum, useQueryState } from 'nuqs'
 import { FONTS } from '../config/constants'
 import { ROUTES, PROJECT_TYPES as ROUTE_PROJECT_TYPES } from '../config/routes'
 
-import Header from '../components/header'
-import Footer from '../components/footer'
-import CTASection from '../components/cta-section'
-import HeroSection from '../components/hero-section'
+import {Header} from '../components/header'
+import {Footer} from '../components/footer'
+import {CTASection} from '../components/cta-section'
+import {HeroSection} from '../components/hero-section'
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -16,7 +16,7 @@ export const Route = createFileRoute('/')({
     ...search,
     type:
       typeof search.type === 'string' &&
-      Object.values(ROUTE_PROJECT_TYPES).includes(search.type)
+      Object.values(ROUTE_PROJECT_TYPES).includes(search.type as "mobile_apps" | "websites")
         ? search.type
         : undefined,
   }),
@@ -48,7 +48,7 @@ function Home() {
     [scrollTo]
   )
 
-  const handleTypeChange = async (type: string) => {
+  const handleTypeChange = async (type: "mobile_apps" | "websites") => {
     await setSelectedType(type)
   }
 

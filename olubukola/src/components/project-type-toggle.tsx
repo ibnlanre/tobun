@@ -1,12 +1,14 @@
 import { PROJECT_TYPES } from '../config/routes'
 import { FONTS } from '../config/constants'
 
+import type { ProjectType } from '../config/routes'
+
 interface ProjectTypeToggleProps {
-  selectedType: string
-  onChange: (type: string) => void
+  selectedType: ProjectType
+  onChange: (type: ProjectType) => void
 }
 
-export default function ProjectTypeToggle({
+export function ProjectTypeToggle({
   selectedType,
   onChange,
 }: ProjectTypeToggleProps) {

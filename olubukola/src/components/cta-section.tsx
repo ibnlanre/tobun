@@ -1,6 +1,6 @@
 import { FONTS, PROJECT_TYPES } from '../config/constants'
 
-export default function CTASection() {
+export function CTASection() {
   return (
     <section className="py-8 md:py-12">
       <h2

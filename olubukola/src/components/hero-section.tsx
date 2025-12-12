@@ -4,19 +4,21 @@ import { useState } from 'react'
 import { PROJECT_TYPES, ROUTES } from '../config/routes'
 import { FONTS } from '../config/constants'
 
-import ProjectTypeToggle from './project-type-toggle'
+import { ProjectTypeToggle } from './project-type-toggle'
+
+import type { ProjectType } from '../config/routes'
 
 interface HeroSectionProps {
   showBackButton?: boolean
   backTo?: string
   onProjectTypeChange?: (type: string) => void
-  selectedType?: string
-  onTypeChange?: (type: string) => void
+  selectedType?: ProjectType
+  onTypeChange?: (type: ProjectType) => void
   tagline?: string
   wavyUnderline?: boolean
 }
 
-export default function HeroSection({
+export function HeroSection({
   showBackButton = false,
   backTo = ROUTES.HOME,
   onProjectTypeChange,
@@ -25,7 +27,7 @@ export default function HeroSection({
   tagline = 'I turn simple ideas into powerful digital experience',
   wavyUnderline = true,
 }: HeroSectionProps) {
-  const [internalSelectedType, setInternalSelectedType] = useState<string>(
+  const [internalSelectedType, setInternalSelectedType] = useState<ProjectType>(
     PROJECT_TYPES.MOBILE_APPS
   )
   const selectedType = controlledSelectedType ?? internalSelectedType
@@ -37,7 +39,7 @@ export default function HeroSection({
     select: (state) => state.location.pathname === ROUTES.HOME,
   })
 
-  const handleTypeChange = (type: string) => {
+  const handleTypeChange = (type: ProjectType) => {
     if (!isHomeRoute) {
       if (!isControlled) {
         setInternalSelectedType(type)

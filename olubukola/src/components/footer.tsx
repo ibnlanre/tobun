@@ -1,6 +1,6 @@
 import { FONTS } from '../config/constants'
 
-export default function Footer() {
+export function Footer() {
   return (
     <footer className="bg-[#0769e0] py-6 md:py-8 mt-12 md:mt-16">
       <p

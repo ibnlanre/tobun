@@ -3,10 +3,10 @@ import { Carousel } from '@mantine/carousel'
 import { ROUTES } from '../config/routes'
 import { FONTS } from '../config/constants'
 
-import Header from '../components/header'
-import HeroSection from '../components/hero-section'
-import Footer from '../components/footer'
-import CTASection from '../components/cta-section'
+import {Header} from '../components/header'
+import {HeroSection} from '../components/hero-section'
+import {Footer} from '../components/footer'
+import {CTASection} from '../components/cta-section'
 
 export const Route = createFileRoute('/heikenma-solar')({
   component: HeikenmaSolar,

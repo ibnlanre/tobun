@@ -15,7 +15,7 @@ import { NuqsAdapter } from 'nuqs/adapters/tanstack-router'
 // import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 import AOS from 'aos'
 import appCss from '../styles.css?url'
-import ScrollToTop from '../components/scroll-to-top'
+import { ScrollToTop } from '../components/scroll-to-top'
 
 import type { QueryClient } from '@tanstack/react-query'
 

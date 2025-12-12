@@ -1,8 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
-import Header from '../components/header'
-import HeroSection from '../components/hero-section'
-import Footer from '../components/footer'
-import CTASection from '../components/cta-section'
+import {Header} from '../components/header'
+import {HeroSection} from '../components/hero-section'
+import {Footer} from '../components/footer'
+import {CTASection} from '../components/cta-section'
 import { FONTS } from '../config/constants'
 
 export const Route = createFileRoute('/laurienla-cake')({
