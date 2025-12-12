@@ -3,11 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
+  "contributors": [
+    {
+      "name": "Ridwan Olanrewaju",
+      "email": "olaitanlanre28@gmail.com",
+      "url": "https://github.com/ibnlanre"
+    },
+    {
+      "name": "Abdulrasheed Madamidola",
+      "email": "aomadamidola@gmail.com",
+      "url": "https://github.com/theonlyrasheed"
+    }
+  ],
   "license": "ISC",
   "devDependencies": {
     "@prettier/plugin-xml": "^3.4.2"
