@@ -1,4 +1,4 @@
-import { FONTS, PROJECT_TYPES } from '../config/constants'
+import { FONTS, PROJECT_TYPES } from '@/config/constants'
 
 export function CTASection() {
   return (

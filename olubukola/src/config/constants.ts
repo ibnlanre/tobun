@@ -47,7 +47,6 @@ export const SKILLS = [
     'Interaction Design',
     'Design System',
     'Accessibility Design',
-    'Interaction Design',
   ],
   [
     'Communication',

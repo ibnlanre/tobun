@@ -1,20 +1,20 @@
 import { createFileRoute } from '@tanstack/react-router'
-import {Header} from '../components/header'
-import {Footer} from '../components/footer'
-import {CTASection} from '../components/cta-section'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
+import { CTASection } from '@/components/cta-section'
 import {
   FONTS,
   MAX_WIDTH_CONTENT,
   SKILLS,
   SOCIAL_LINKS,
-} from '../config/constants'
+} from '@/config/constants'
 
 export const Route = createFileRoute('/profile')({ component: Profile })
 
 function Profile() {
   return (
     <div className="min-h-screen bg-white">
-      <Header variant="withBack" />
+      <Header variant="profile" />
 
       <main
         className={`max-w-[${MAX_WIDTH_CONTENT}] mx-auto px-4 sm:px-6 md:px-12 py-8 md:py-12`}
@@ -134,10 +134,7 @@ function Profile() {
           </h2>
           <div className="flex flex-col gap-4 md:gap-5">
             {SKILLS.map((row, rowIndex) => (
-              <div
-                key={rowIndex}
-                className="flex flex-wrap gap-3 md:gap-3.5"
-              >
+              <div key={rowIndex} className="flex flex-wrap gap-3 md:gap-3.5">
                 {row.map((skill) => (
                   <span
                     key={skill}

@@ -1,9 +1,8 @@
-import { Link } from '@tanstack/react-router'
+import { Link, useMatchRoute } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
-import { ROUTES } from '../config/routes'
-import { FONTS } from '../config/constants'
-
 import { ProjectTypeToggle } from './project-type-toggle'
+import { FONTS } from '@/config/constants'
+import { FileRoutesByFullPath } from '@/routeTree.gen'
 
 interface HeroSectionProps {
   showBackButton?: boolean
@@ -12,12 +11,19 @@ interface HeroSectionProps {
   wavyUnderline?: boolean
 }
 
+const routes: Array<keyof FileRoutesByFullPath> = [
+  '/',
+  '/mobile-apps',
+  '/websites',
+]
+
 export function HeroSection({
-  showBackButton = false,
-  backTo = ROUTES.HOME,
   tagline = 'I turn simple ideas into powerful digital experience',
   wavyUnderline = true,
 }: HeroSectionProps) {
+  const matchRoute = useMatchRoute()
+  const matches = routes.some((path) => matchRoute({ to: path }))
+
   return (
     <section className="py-8 md:py-16 text-center">
       <div className="max-w-4xl mx-auto flex flex-col gap-6">
@@ -74,9 +80,9 @@ export function HeroSection({
       </div>
 
       {/* Back Button */}
-      {showBackButton && (
+      {!matches && (
         <Link
-          to={backTo}
+          to=".."
           className="fixed top-20 md:top-32 right-4 md:right-6 lg:right-12 flex items-center gap-2 md:gap-4 bg-[#0769e0] text-white px-4 md:px-6 py-2 md:py-3 rounded hover:bg-[#0558c0] transition-colors z-10"
         >
           <ArrowLeft size={18} className="md:w-5 md:h-5" />

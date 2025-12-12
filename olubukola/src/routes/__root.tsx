@@ -1,4 +1,5 @@
 import {
+  DefaultGlobalNotFound,
   HeadContent,
   Outlet,
   Scripts,
@@ -15,9 +16,8 @@ import { NuqsAdapter } from 'nuqs/adapters/tanstack-router'
 // import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 import AOS from 'aos'
 import appCss from '../styles.css?url'
-import { ScrollToTop } from '../components/scroll-to-top'
-
 import type { QueryClient } from '@tanstack/react-query'
+import { ScrollToTop } from '@/components/scroll-to-top'
 
 import 'aos/dist/aos.css'
 import '@mantine/core/styles.css'
@@ -48,7 +48,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
     ],
   }),
-
+  notFoundComponent: DefaultGlobalNotFound,
   component: RootComponent,
   shellComponent: RootDocument,
 })

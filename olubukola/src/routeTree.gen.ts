@@ -9,160 +9,188 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TulipAppRouteImport } from './routes/tulip-app'
-import { Route as SwiftRateAppRouteImport } from './routes/swift-rate-app'
 import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as LittleLuminariesRouteImport } from './routes/little-luminaries'
-import { Route as LaurienlaCakeRouteImport } from './routes/laurienla-cake'
-import { Route as IllustrationRouteImport } from './routes/illustration'
-import { Route as HeikenmaSolarRouteImport } from './routes/heikenma-solar'
-import { Route as AtmCardRouteImport } from './routes/atm-card'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as WorkRouteImport } from './routes/_work'
+import { Route as WorkIndexRouteImport } from './routes/_work/index'
+import { Route as WorkWebsitesIndexRouteImport } from './routes/_work/websites/index'
+import { Route as WorkMobileAppsIndexRouteImport } from './routes/_work/mobile-apps/index'
+import { Route as WorkGraphicDesignsIndexRouteImport } from './routes/_work/graphic-designs/index'
+import { Route as WorkWebsitesLittleLuminariesRouteImport } from './routes/_work/websites/little-luminaries'
+import { Route as WorkWebsitesHeikenmaSolarRouteImport } from './routes/_work/websites/heikenma-solar'
+import { Route as WorkMobileAppsTulipAppRouteImport } from './routes/_work/mobile-apps/tulip-app'
+import { Route as WorkMobileAppsSwiftRateAppRouteImport } from './routes/_work/mobile-apps/swift-rate-app'
+import { Route as WorkMobileAppsLaurienlaCakeRouteImport } from './routes/_work/mobile-apps/laurienla-cake'
+import { Route as WorkGraphicDesignsIllustrationRouteImport } from './routes/_work/graphic-designs/illustration'
+import { Route as WorkGraphicDesignsAtmCardRouteImport } from './routes/_work/graphic-designs/atm-card'
 
-const TulipAppRoute = TulipAppRouteImport.update({
-  id: '/tulip-app',
-  path: '/tulip-app',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SwiftRateAppRoute = SwiftRateAppRouteImport.update({
-  id: '/swift-rate-app',
-  path: '/swift-rate-app',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LittleLuminariesRoute = LittleLuminariesRouteImport.update({
-  id: '/little-luminaries',
-  path: '/little-luminaries',
+const WorkRoute = WorkRouteImport.update({
+  id: '/_work',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LaurienlaCakeRoute = LaurienlaCakeRouteImport.update({
-  id: '/laurienla-cake',
-  path: '/laurienla-cake',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IllustrationRoute = IllustrationRouteImport.update({
-  id: '/illustration',
-  path: '/illustration',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HeikenmaSolarRoute = HeikenmaSolarRouteImport.update({
-  id: '/heikenma-solar',
-  path: '/heikenma-solar',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AtmCardRoute = AtmCardRouteImport.update({
-  id: '/atm-card',
-  path: '/atm-card',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndexRoute = IndexRouteImport.update({
+const WorkIndexRoute = WorkIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => WorkRoute,
 } as any)
+const WorkWebsitesIndexRoute = WorkWebsitesIndexRouteImport.update({
+  id: '/websites/',
+  path: '/websites/',
+  getParentRoute: () => WorkRoute,
+} as any)
+const WorkMobileAppsIndexRoute = WorkMobileAppsIndexRouteImport.update({
+  id: '/mobile-apps/',
+  path: '/mobile-apps/',
+  getParentRoute: () => WorkRoute,
+} as any)
+const WorkGraphicDesignsIndexRoute = WorkGraphicDesignsIndexRouteImport.update({
+  id: '/graphic-designs/',
+  path: '/graphic-designs/',
+  getParentRoute: () => WorkRoute,
+} as any)
+const WorkWebsitesLittleLuminariesRoute =
+  WorkWebsitesLittleLuminariesRouteImport.update({
+    id: '/websites/little-luminaries',
+    path: '/websites/little-luminaries',
+    getParentRoute: () => WorkRoute,
+  } as any)
+const WorkWebsitesHeikenmaSolarRoute =
+  WorkWebsitesHeikenmaSolarRouteImport.update({
+    id: '/websites/heikenma-solar',
+    path: '/websites/heikenma-solar',
+    getParentRoute: () => WorkRoute,
+  } as any)
+const WorkMobileAppsTulipAppRoute = WorkMobileAppsTulipAppRouteImport.update({
+  id: '/mobile-apps/tulip-app',
+  path: '/mobile-apps/tulip-app',
+  getParentRoute: () => WorkRoute,
+} as any)
+const WorkMobileAppsSwiftRateAppRoute =
+  WorkMobileAppsSwiftRateAppRouteImport.update({
+    id: '/mobile-apps/swift-rate-app',
+    path: '/mobile-apps/swift-rate-app',
+    getParentRoute: () => WorkRoute,
+  } as any)
+const WorkMobileAppsLaurienlaCakeRoute =
+  WorkMobileAppsLaurienlaCakeRouteImport.update({
+    id: '/mobile-apps/laurienla-cake',
+    path: '/mobile-apps/laurienla-cake',
+    getParentRoute: () => WorkRoute,
+  } as any)
+const WorkGraphicDesignsIllustrationRoute =
+  WorkGraphicDesignsIllustrationRouteImport.update({
+    id: '/graphic-designs/illustration',
+    path: '/graphic-designs/illustration',
+    getParentRoute: () => WorkRoute,
+  } as any)
+const WorkGraphicDesignsAtmCardRoute =
+  WorkGraphicDesignsAtmCardRouteImport.update({
+    id: '/graphic-designs/atm-card',
+    path: '/graphic-designs/atm-card',
+    getParentRoute: () => WorkRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/atm-card': typeof AtmCardRoute
-  '/heikenma-solar': typeof HeikenmaSolarRoute
-  '/illustration': typeof IllustrationRoute
-  '/laurienla-cake': typeof LaurienlaCakeRoute
-  '/little-luminaries': typeof LittleLuminariesRoute
   '/profile': typeof ProfileRoute
-  '/swift-rate-app': typeof SwiftRateAppRoute
-  '/tulip-app': typeof TulipAppRoute
+  '/': typeof WorkIndexRoute
+  '/graphic-designs/atm-card': typeof WorkGraphicDesignsAtmCardRoute
+  '/graphic-designs/illustration': typeof WorkGraphicDesignsIllustrationRoute
+  '/mobile-apps/laurienla-cake': typeof WorkMobileAppsLaurienlaCakeRoute
+  '/mobile-apps/swift-rate-app': typeof WorkMobileAppsSwiftRateAppRoute
+  '/mobile-apps/tulip-app': typeof WorkMobileAppsTulipAppRoute
+  '/websites/heikenma-solar': typeof WorkWebsitesHeikenmaSolarRoute
+  '/websites/little-luminaries': typeof WorkWebsitesLittleLuminariesRoute
+  '/graphic-designs': typeof WorkGraphicDesignsIndexRoute
+  '/mobile-apps': typeof WorkMobileAppsIndexRoute
+  '/websites': typeof WorkWebsitesIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/atm-card': typeof AtmCardRoute
-  '/heikenma-solar': typeof HeikenmaSolarRoute
-  '/illustration': typeof IllustrationRoute
-  '/laurienla-cake': typeof LaurienlaCakeRoute
-  '/little-luminaries': typeof LittleLuminariesRoute
   '/profile': typeof ProfileRoute
-  '/swift-rate-app': typeof SwiftRateAppRoute
-  '/tulip-app': typeof TulipAppRoute
+  '/': typeof WorkIndexRoute
+  '/graphic-designs/atm-card': typeof WorkGraphicDesignsAtmCardRoute
+  '/graphic-designs/illustration': typeof WorkGraphicDesignsIllustrationRoute
+  '/mobile-apps/laurienla-cake': typeof WorkMobileAppsLaurienlaCakeRoute
+  '/mobile-apps/swift-rate-app': typeof WorkMobileAppsSwiftRateAppRoute
+  '/mobile-apps/tulip-app': typeof WorkMobileAppsTulipAppRoute
+  '/websites/heikenma-solar': typeof WorkWebsitesHeikenmaSolarRoute
+  '/websites/little-luminaries': typeof WorkWebsitesLittleLuminariesRoute
+  '/graphic-designs': typeof WorkGraphicDesignsIndexRoute
+  '/mobile-apps': typeof WorkMobileAppsIndexRoute
+  '/websites': typeof WorkWebsitesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/atm-card': typeof AtmCardRoute
-  '/heikenma-solar': typeof HeikenmaSolarRoute
-  '/illustration': typeof IllustrationRoute
-  '/laurienla-cake': typeof LaurienlaCakeRoute
-  '/little-luminaries': typeof LittleLuminariesRoute
+  '/_work': typeof WorkRouteWithChildren
   '/profile': typeof ProfileRoute
-  '/swift-rate-app': typeof SwiftRateAppRoute
-  '/tulip-app': typeof TulipAppRoute
+  '/_work/': typeof WorkIndexRoute
+  '/_work/graphic-designs/atm-card': typeof WorkGraphicDesignsAtmCardRoute
+  '/_work/graphic-designs/illustration': typeof WorkGraphicDesignsIllustrationRoute
+  '/_work/mobile-apps/laurienla-cake': typeof WorkMobileAppsLaurienlaCakeRoute
+  '/_work/mobile-apps/swift-rate-app': typeof WorkMobileAppsSwiftRateAppRoute
+  '/_work/mobile-apps/tulip-app': typeof WorkMobileAppsTulipAppRoute
+  '/_work/websites/heikenma-solar': typeof WorkWebsitesHeikenmaSolarRoute
+  '/_work/websites/little-luminaries': typeof WorkWebsitesLittleLuminariesRoute
+  '/_work/graphic-designs/': typeof WorkGraphicDesignsIndexRoute
+  '/_work/mobile-apps/': typeof WorkMobileAppsIndexRoute
+  '/_work/websites/': typeof WorkWebsitesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/atm-card'
-    | '/heikenma-solar'
-    | '/illustration'
-    | '/laurienla-cake'
-    | '/little-luminaries'
     | '/profile'
-    | '/swift-rate-app'
-    | '/tulip-app'
+    | '/'
+    | '/graphic-designs/atm-card'
+    | '/graphic-designs/illustration'
+    | '/mobile-apps/laurienla-cake'
+    | '/mobile-apps/swift-rate-app'
+    | '/mobile-apps/tulip-app'
+    | '/websites/heikenma-solar'
+    | '/websites/little-luminaries'
+    | '/graphic-designs'
+    | '/mobile-apps'
+    | '/websites'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/atm-card'
-    | '/heikenma-solar'
-    | '/illustration'
-    | '/laurienla-cake'
-    | '/little-luminaries'
     | '/profile'
-    | '/swift-rate-app'
-    | '/tulip-app'
+    | '/'
+    | '/graphic-designs/atm-card'
+    | '/graphic-designs/illustration'
+    | '/mobile-apps/laurienla-cake'
+    | '/mobile-apps/swift-rate-app'
+    | '/mobile-apps/tulip-app'
+    | '/websites/heikenma-solar'
+    | '/websites/little-luminaries'
+    | '/graphic-designs'
+    | '/mobile-apps'
+    | '/websites'
   id:
     | '__root__'
-    | '/'
-    | '/atm-card'
-    | '/heikenma-solar'
-    | '/illustration'
-    | '/laurienla-cake'
-    | '/little-luminaries'
+    | '/_work'
     | '/profile'
-    | '/swift-rate-app'
-    | '/tulip-app'
+    | '/_work/'
+    | '/_work/graphic-designs/atm-card'
+    | '/_work/graphic-designs/illustration'
+    | '/_work/mobile-apps/laurienla-cake'
+    | '/_work/mobile-apps/swift-rate-app'
+    | '/_work/mobile-apps/tulip-app'
+    | '/_work/websites/heikenma-solar'
+    | '/_work/websites/little-luminaries'
+    | '/_work/graphic-designs/'
+    | '/_work/mobile-apps/'
+    | '/_work/websites/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AtmCardRoute: typeof AtmCardRoute
-  HeikenmaSolarRoute: typeof HeikenmaSolarRoute
-  IllustrationRoute: typeof IllustrationRoute
-  LaurienlaCakeRoute: typeof LaurienlaCakeRoute
-  LittleLuminariesRoute: typeof LittleLuminariesRoute
+  WorkRoute: typeof WorkRouteWithChildren
   ProfileRoute: typeof ProfileRoute
-  SwiftRateAppRoute: typeof SwiftRateAppRoute
-  TulipAppRoute: typeof TulipAppRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/tulip-app': {
-      id: '/tulip-app'
-      path: '/tulip-app'
-      fullPath: '/tulip-app'
-      preLoaderRoute: typeof TulipAppRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/swift-rate-app': {
-      id: '/swift-rate-app'
-      path: '/swift-rate-app'
-      fullPath: '/swift-rate-app'
-      preLoaderRoute: typeof SwiftRateAppRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -170,61 +198,126 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/little-luminaries': {
-      id: '/little-luminaries'
-      path: '/little-luminaries'
-      fullPath: '/little-luminaries'
-      preLoaderRoute: typeof LittleLuminariesRouteImport
+    '/_work': {
+      id: '/_work'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/laurienla-cake': {
-      id: '/laurienla-cake'
-      path: '/laurienla-cake'
-      fullPath: '/laurienla-cake'
-      preLoaderRoute: typeof LaurienlaCakeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/illustration': {
-      id: '/illustration'
-      path: '/illustration'
-      fullPath: '/illustration'
-      preLoaderRoute: typeof IllustrationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/heikenma-solar': {
-      id: '/heikenma-solar'
-      path: '/heikenma-solar'
-      fullPath: '/heikenma-solar'
-      preLoaderRoute: typeof HeikenmaSolarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/atm-card': {
-      id: '/atm-card'
-      path: '/atm-card'
-      fullPath: '/atm-card'
-      preLoaderRoute: typeof AtmCardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/': {
-      id: '/'
+    '/_work/': {
+      id: '/_work/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof WorkIndexRouteImport
+      parentRoute: typeof WorkRoute
+    }
+    '/_work/websites/': {
+      id: '/_work/websites/'
+      path: '/websites'
+      fullPath: '/websites'
+      preLoaderRoute: typeof WorkWebsitesIndexRouteImport
+      parentRoute: typeof WorkRoute
+    }
+    '/_work/mobile-apps/': {
+      id: '/_work/mobile-apps/'
+      path: '/mobile-apps'
+      fullPath: '/mobile-apps'
+      preLoaderRoute: typeof WorkMobileAppsIndexRouteImport
+      parentRoute: typeof WorkRoute
+    }
+    '/_work/graphic-designs/': {
+      id: '/_work/graphic-designs/'
+      path: '/graphic-designs'
+      fullPath: '/graphic-designs'
+      preLoaderRoute: typeof WorkGraphicDesignsIndexRouteImport
+      parentRoute: typeof WorkRoute
+    }
+    '/_work/websites/little-luminaries': {
+      id: '/_work/websites/little-luminaries'
+      path: '/websites/little-luminaries'
+      fullPath: '/websites/little-luminaries'
+      preLoaderRoute: typeof WorkWebsitesLittleLuminariesRouteImport
+      parentRoute: typeof WorkRoute
+    }
+    '/_work/websites/heikenma-solar': {
+      id: '/_work/websites/heikenma-solar'
+      path: '/websites/heikenma-solar'
+      fullPath: '/websites/heikenma-solar'
+      preLoaderRoute: typeof WorkWebsitesHeikenmaSolarRouteImport
+      parentRoute: typeof WorkRoute
+    }
+    '/_work/mobile-apps/tulip-app': {
+      id: '/_work/mobile-apps/tulip-app'
+      path: '/mobile-apps/tulip-app'
+      fullPath: '/mobile-apps/tulip-app'
+      preLoaderRoute: typeof WorkMobileAppsTulipAppRouteImport
+      parentRoute: typeof WorkRoute
+    }
+    '/_work/mobile-apps/swift-rate-app': {
+      id: '/_work/mobile-apps/swift-rate-app'
+      path: '/mobile-apps/swift-rate-app'
+      fullPath: '/mobile-apps/swift-rate-app'
+      preLoaderRoute: typeof WorkMobileAppsSwiftRateAppRouteImport
+      parentRoute: typeof WorkRoute
+    }
+    '/_work/mobile-apps/laurienla-cake': {
+      id: '/_work/mobile-apps/laurienla-cake'
+      path: '/mobile-apps/laurienla-cake'
+      fullPath: '/mobile-apps/laurienla-cake'
+      preLoaderRoute: typeof WorkMobileAppsLaurienlaCakeRouteImport
+      parentRoute: typeof WorkRoute
+    }
+    '/_work/graphic-designs/illustration': {
+      id: '/_work/graphic-designs/illustration'
+      path: '/graphic-designs/illustration'
+      fullPath: '/graphic-designs/illustration'
+      preLoaderRoute: typeof WorkGraphicDesignsIllustrationRouteImport
+      parentRoute: typeof WorkRoute
+    }
+    '/_work/graphic-designs/atm-card': {
+      id: '/_work/graphic-designs/atm-card'
+      path: '/graphic-designs/atm-card'
+      fullPath: '/graphic-designs/atm-card'
+      preLoaderRoute: typeof WorkGraphicDesignsAtmCardRouteImport
+      parentRoute: typeof WorkRoute
     }
   }
 }
 
+interface WorkRouteChildren {
+  WorkIndexRoute: typeof WorkIndexRoute
+  WorkGraphicDesignsAtmCardRoute: typeof WorkGraphicDesignsAtmCardRoute
+  WorkGraphicDesignsIllustrationRoute: typeof WorkGraphicDesignsIllustrationRoute
+  WorkMobileAppsLaurienlaCakeRoute: typeof WorkMobileAppsLaurienlaCakeRoute
+  WorkMobileAppsSwiftRateAppRoute: typeof WorkMobileAppsSwiftRateAppRoute
+  WorkMobileAppsTulipAppRoute: typeof WorkMobileAppsTulipAppRoute
+  WorkWebsitesHeikenmaSolarRoute: typeof WorkWebsitesHeikenmaSolarRoute
+  WorkWebsitesLittleLuminariesRoute: typeof WorkWebsitesLittleLuminariesRoute
+  WorkGraphicDesignsIndexRoute: typeof WorkGraphicDesignsIndexRoute
+  WorkMobileAppsIndexRoute: typeof WorkMobileAppsIndexRoute
+  WorkWebsitesIndexRoute: typeof WorkWebsitesIndexRoute
+}
+
+const WorkRouteChildren: WorkRouteChildren = {
+  WorkIndexRoute: WorkIndexRoute,
+  WorkGraphicDesignsAtmCardRoute: WorkGraphicDesignsAtmCardRoute,
+  WorkGraphicDesignsIllustrationRoute: WorkGraphicDesignsIllustrationRoute,
+  WorkMobileAppsLaurienlaCakeRoute: WorkMobileAppsLaurienlaCakeRoute,
+  WorkMobileAppsSwiftRateAppRoute: WorkMobileAppsSwiftRateAppRoute,
+  WorkMobileAppsTulipAppRoute: WorkMobileAppsTulipAppRoute,
+  WorkWebsitesHeikenmaSolarRoute: WorkWebsitesHeikenmaSolarRoute,
+  WorkWebsitesLittleLuminariesRoute: WorkWebsitesLittleLuminariesRoute,
+  WorkGraphicDesignsIndexRoute: WorkGraphicDesignsIndexRoute,
+  WorkMobileAppsIndexRoute: WorkMobileAppsIndexRoute,
+  WorkWebsitesIndexRoute: WorkWebsitesIndexRoute,
+}
+
+const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AtmCardRoute: AtmCardRoute,
-  HeikenmaSolarRoute: HeikenmaSolarRoute,
-  IllustrationRoute: IllustrationRoute,
-  LaurienlaCakeRoute: LaurienlaCakeRoute,
-  LittleLuminariesRoute: LittleLuminariesRoute,
+  WorkRoute: WorkRouteWithChildren,
   ProfileRoute: ProfileRoute,
-  SwiftRateAppRoute: SwiftRateAppRoute,
-  TulipAppRoute: TulipAppRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

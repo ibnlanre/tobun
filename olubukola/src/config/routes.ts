@@ -4,14 +4,16 @@
 export const ROUTES = {
   HOME: '/',
   PROFILE: '/profile',
-  SWIFT_RATE_APP: '/swift-rate-app',
-  TULIP_APP: '/tulip-app',
-  ATM_CARD: '/atm-card',
-  GRAPHIC: '/illustration',
-  LITTLE_LUMINARIES: '/little-luminaries',
-  LAURIENLA_CAKE: '/laurienla-cake',
-  HEIKENMA_SOLAR: '/heikenma-solar',
-  LADYWID: '/ladywid',
+  MOBILE_APPS: '/mobile-apps',
+  WEBSITES: '/websites',
+  SWIFT_RATE_APP: '/mobile-apps/swift-rate-app',
+  TULIP_APP: '/mobile-apps/tulip-app',
+  ATM_CARD: '/graphic-designs/atm-card',
+  ILLUSTRATION: '/graphic-designs/illustration',
+  LITTLE_LUMINARIES: '/websites/little-luminaries',
+  LAURIENLA_CAKE: '/mobile-apps/laurienla-cake',
+  HEIKENMA_SOLAR: '/websites/heikenma-solar',
+  LADYWID: '/websites/ladywid',
 } as const
 
 /**

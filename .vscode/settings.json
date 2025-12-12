@@ -7,6 +7,7 @@
   "editor.tabSize": 2,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
 
   // Auto fix
   "editor.codeActionsOnSave": {

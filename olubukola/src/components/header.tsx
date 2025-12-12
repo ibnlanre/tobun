@@ -1,28 +1,31 @@
-import { Link } from '@tanstack/react-router'
+import { Link, useRouter } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 import { TypingText } from './typing-text'
 import { ROUTES } from '@/config/routes'
 import { FONTS } from '@/config/constants'
 
 interface HeaderProps {
-  variant?: 'default' | 'withBack'
+  variant?: 'default' | 'profile'
 }
 
 export function Header({ variant = 'default' }: HeaderProps) {
   const parts = ['Olubukola', ' Tobun', ' Portfolio']
+  const router = useRouter()
 
   return (
     <header className="border-b border-[#eeeeee] shadow-[0px_1px_4px_rgba(71,71,71,0.20)] px-6 md:px-12 py-4 flex items-center justify-between">
-      <h1
-        className=" text-lg sm:text-xl font-medium"
-        style={{ fontFamily: FONTS.MONTSERRAT }}
-      >
-        <TypingText parts={parts} />
-      </h1>
+      <Link to={ROUTES.HOME} className="text-decoration-none">
+        <h1
+          className="text-lg sm:text-xl font-medium"
+          style={{ fontFamily: FONTS.MONTSERRAT }}
+        >
+          <TypingText parts={parts} />
+        </h1>
+      </Link>
 
-      {variant === 'withBack' ? (
+      {variant === 'profile' ? (
         <button
-          onClick={() => window.history.back()}
+          onClick={() => router.history.back()}
           className="flex items-center gap-2 md:gap-4 bg-[#0769e0] text-white px-4 md:px-6 py-2 md:py-3 rounded hover:bg-[#0558c0] transition-colors z-10"
           type="button"
         >

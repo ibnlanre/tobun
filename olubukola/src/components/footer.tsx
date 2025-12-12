@@ -1,4 +1,4 @@
-import { FONTS } from '../config/constants'
+import { FONTS } from '@/config/constants'
 
 export function Footer() {
   return (
